@@ -11,15 +11,21 @@ const rowStyle = {
   minHeight: "100vh"
 }
 
+const centerStyle = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center"
+}
+
 export default function LogIn () {
   const [form] = Form.useForm()
 
   return (
-    <Row 
+    <Row
       align="middle"
-      style={rowStyle}  
+      style={rowStyle}
     >
-      <Col span={10}>
+      <Col span={8} style={{ ...centerStyle, marginRight: "200px" }}>
         <img
           alt="logo"
           src="https://cdn-icons-png.flaticon.com/512/257/257815.png"
@@ -28,22 +34,20 @@ export default function LogIn () {
         <p>Integridad y seguridad alimentaria, garantizadas</p>
       </Col>
       <Col span={8}>
-        <h1>L.I.M.S.</h1>
+        <h1 style={centerStyle}>L.I.M.S.</h1>
         <Form
           layout="vertical"
           form={form}
           style={{ maxWidth: 600 }}
         >
           <Form.Item label="Usuario">
-            <Input placeholder="input placeholder" />
+            <Input type="email" />
           </Form.Item>
-
           <Form.Item label="Contraseña">
-            <Input placeholder="input placeholder" />
+            <Input type="password" />
           </Form.Item>
-
-          <Form.Item>
-            <Button type="primary">Submit</Button>
+          <Form.Item style={centerStyle}>
+            <Button type="primary" shape="round" style={{ background: "green", borderColor: "white" }}>Log In</Button>
           </Form.Item>
         </Form>
       </Col>
