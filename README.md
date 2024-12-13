@@ -1,8 +1,6 @@
-# React + Vite
+### Librerías utilizadas:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Ant Design: Librería de componentes de interfaz de usuario.
+- React Hook Form: Librería para simplificar la gestión de formularios en React.
+- React Router: Librería para implementar la navegación en aplicaciones React.
+- Yup: Librería para validación de esquemas.
