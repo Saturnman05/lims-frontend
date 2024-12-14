@@ -1,5 +1,5 @@
-import LogIn from "./app/Login"
-import NotFoundPage from "./app/NotFound"
+import LogIn from "./pages/login/index.jsx"
+import NotFoundPage from "./pages/not-found/index.jsx"
 
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
