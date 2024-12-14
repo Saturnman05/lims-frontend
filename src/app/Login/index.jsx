@@ -20,6 +20,10 @@ const centerStyle = {
 export default function LogIn () {
   const [form] = Form.useForm()
 
+  const handleSubmit = () => {
+    console.log(form);
+  }
+
   return (
     <Row
       align="middle"
@@ -47,7 +51,14 @@ export default function LogIn () {
             <Input type="password" />
           </Form.Item>
           <Form.Item style={centerStyle}>
-            <Button type="primary" shape="round" style={{ background: "green", borderColor: "white" }}>Log In</Button>
+            <Button 
+              type="primary" 
+              shape="round" 
+              style={{ background: "green", borderColor: "white" }}
+              onClick={handleSubmit}
+            >
+              Log In
+            </Button>
           </Form.Item>
         </Form>
       </Col>
