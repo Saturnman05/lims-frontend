@@ -9,7 +9,6 @@ import SampleAssignation from "./app/SampleAssignation";
 function App() {
   return (
     <>
-      <NavLabManager />
       <div className="container">
         <Routes>
           <Route path="*" element={<NotFoundPage />}></Route>
