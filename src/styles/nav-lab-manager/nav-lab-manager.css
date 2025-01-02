@@ -36,7 +36,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 a {
@@ -47,4 +47,12 @@ a {
 a:hover {
   color: #200e32;
   transition-duration: 150ms;
+}
+
+.custom-avatar {
+  background-color: #dce7f5;
+}
+
+.custom-avatar .anticon {
+  color: #0c1827;
 }

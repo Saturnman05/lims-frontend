@@ -1,3 +1,5 @@
+import { Link, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar } from "antd";
 import "../../styles/nav-lab-manager/nav-lab-manager.css";
@@ -6,39 +8,56 @@ export function NavLabManager() {
   return (
     <nav className="nav-lab-header">
       <div className="navbar-logo">
-        <a href="http://" target="_blank" rel="noopener noreferrer">
+        <Link to="#" target="_blank" rel="noopener noreferrer">
           L.I.M.S
-        </a>
+        </Link>
       </div>
       <ul className="nav-links">
         <li>
-          <a href="/SampleManagement">Gestión de Muestras</a>
+          <CustomLink to="/SampleManagement">Gestión de Muestras</CustomLink>
         </li>
         <li>
-          <a href="/SampleAssignment">Gestión de Muestras</a>
+          <CustomLink to="/SampleAssignment">Asignación de Muestras</CustomLink>
         </li>
         <li>
-          <a href="/Results">Gestión de Muestras</a>
+          <CustomLink to="/Results">Resultados</CustomLink>
         </li>
         <li>
-          <a href="/Information">Gestión de Muestras</a>
+          <CustomLink to="/Information">Informes</CustomLink>
         </li>
         <li>
-          <a href="/Management">Gestión de Muestras</a>
+          <CustomLink to="/Management">Administración</CustomLink>
         </li>
         <li>
-          <a href="/support">Gestión de Muestras</a>
+          <CustomLink to="/support">Soporte</CustomLink>
         </li>
         <li>
-          <a href="/Account">
+          <CustomLink to="/Account">
             <Avatar
-              style={{ backgroundColor: "#EADDFF" }}
+              className="custom-avatar"
               size={30}
-              icon={<UserOutlined style={{ color: "#4F378A" }} />}
+              icon={<UserOutlined />}
             />
-          </a>
+          </CustomLink>
         </li>
       </ul>
     </nav>
   );
 }
+
+function CustomLink({ to, children, ...props }) {
+  const path = useLocation();
+
+  return (
+    <li className={path === to ? "active" : ""}>
+      <Link to={to} {...props}>
+        {children}
+      </Link>
+    </li>
+  );
+}
+
+CustomLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};

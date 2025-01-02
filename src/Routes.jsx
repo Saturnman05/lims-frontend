@@ -7,20 +7,9 @@ import SampleAssignation from "./app/SampleAssignation";
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
   { path: "/", element: <LogIn /> },
-  {
-    path: "homeLabManager",
-    element: <HomeLabManager />,
-    children: [
-      {
-        path: "sampleManagement",
-        element: <SampleManagement />,
-      },
-      {
-        path: "sampleAssignation",
-        element: <SampleAssignation />,
-      },
-    ],
-  },
+  { path: "homeLabManager", element: <HomeLabManager /> },
+  { path: "sampleAssignation", element: <SampleAssignation /> },
+  { path: "sampleManagement", element: <SampleManagement /> },
   //  {
   //    path: "app",
   //    element: <AppRouterPage />,
