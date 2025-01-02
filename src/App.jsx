@@ -1,14 +1,26 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
-import { Routes } from "./Routes";
+import { Route, Routes } from "react-router-dom";
 import { NavLabManager } from "./components/nav-lab-manager/nav-lab-manager";
-
-const router = createBrowserRouter(Routes);
+import LogIn from "./app/Login";
+import NotFoundPage from "./app/NotFound";
+import HomeLabManager from "./app/HomeLabManager";
+import SampleManagement from "./app/SampleManagement";
+import SampleAssignation from "./app/SampleAssignation";
 
 function App() {
   return (
     <>
       <NavLabManager />
-      <RouterProvider router={router} />
+      <div className="container">
+        <Routes>
+          <Route path="*" element={<NotFoundPage />}></Route>
+          <Route path="/" element={<LogIn />}></Route>
+          <Route path="homeLabManager" element={<HomeLabManager />}></Route>
+          <Route
+            path="sampleAssignation"
+            element={<SampleAssignation />}></Route>
+          <Route path="sampleManagement" element={<SampleManagement />}></Route>
+        </Routes>
+      </div>
     </>
   );
 }
