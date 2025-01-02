@@ -1,12 +1,16 @@
-import { createBrowserRouter, RouterProvider } from "react-router"
-import { Routes } from "./Routes"
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { Routes } from "./Routes";
+import { NavLabManager } from "./components/nav-lab-manager/nav-lab-manager";
 
-const router = createBrowserRouter(Routes)
+const router = createBrowserRouter(Routes);
 
 function App() {
   return (
-    <RouterProvider router={router} />
-  )
+    <>
+      <NavLabManager />
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
-export default App
+export default App;
