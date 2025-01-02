@@ -1,5 +1,5 @@
-import LogIn from "./app/Login";
-import NotFoundPage from "./app/NotFound";
+import LogIn from "./pages/login";
+import NotFoundPage from "./pages/not-found";
 import HomeLabManager from "./app/HomeLabManager";
 import SampleManagement from "./app/SampleManagement";
 import SampleAssignation from "./app/SampleAssignation";
