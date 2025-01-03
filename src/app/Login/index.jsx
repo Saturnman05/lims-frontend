@@ -1,4 +1,5 @@
 import { Form, Button, Input, Row, Col } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const imgStyle = {
   display: "block",
@@ -19,10 +20,17 @@ const centerStyle = {
 
 export default function LogIn() {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    console.log(form);
+  const handleButtonClick = () => {
+    navigate("/layout");
   };
+
+  {
+    /*   const handleSubmit = () => {
+    console.log(form);
+  };*/
+  }
 
   return (
     <div id="login">
@@ -53,7 +61,7 @@ export default function LogIn() {
                 type="primary"
                 shape="round"
                 style={{ background: "#16D9CE", borderColor: "white" }}
-                onClick={handleSubmit}>
+                onClick={handleButtonClick}>
                 Log In
               </Button>
             </Form.Item>
