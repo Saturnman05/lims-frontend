@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-}
-
 .nav-lab-header {
   background-color: #0cb2aa;
   color: #fff;
@@ -17,7 +13,7 @@ body {
   align-items: center;
   margin: 1rem;
   border-radius: 5px;
-  width: 95vw;
+  max-width: 100vw;
 }
 
 .navbar-logo {
