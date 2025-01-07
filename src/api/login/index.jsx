@@ -1,7 +1,7 @@
 import { API_URL } from "../../utils/constats"
 
 export async function LogIn (user) {
-  try {
+  /*try {
     const response = await fetch(`${API_URL}/login`, {
       method: "post",
       body: JSON.stringify(user)
@@ -10,5 +10,7 @@ export async function LogIn (user) {
     localStorage.setItem("jwt", token)  
   } catch (error) {
     console.error("Error al iniciar sesión", error)
-  }
+  }*/
+  const token = "1";
+  localStorage.setItem("jwt", token);
 }
