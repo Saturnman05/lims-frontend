@@ -1,5 +1,3 @@
-import LogIn from "./app/login";
-import NotFoundPage from "./app/not-found";
 import HomeLabManager from "./app/labManager/homeLabManager";
 import SampleLabManager from "./app/labManager/samples";
 import ResultsAuditLabManager from "./app/labManager/resultsAudit";
@@ -8,6 +6,8 @@ import InformsLabManager from "./app/labManager/informs";
 import StatisticsLabManager from "./app/labManager/statistics";
 import ManagementLabManager from "./app/labManager/management";
 import SupportLabManager from "./app/labManager/support";
+import LogIn from "./app/login/index.jsx";
+import NotFoundPage from "./app/not-found/index.jsx";
 
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
