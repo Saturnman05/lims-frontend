@@ -1,28 +1,28 @@
-import { Form, Button, Input, Row, Col } from "antd"
+import { Form, Button, Input, Row, Col } from "antd";
 
 const imgStyle = {
   display: 'block',
   width: 200,
-}
+};
 
 const rowStyle = {
   display: "flex", 
   justifyContent: "center", 
   minHeight: "100vh"
-}
+};
 
 const centerStyle = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center"
-}
+};
 
 export default function LogIn () {
-  const [form] = Form.useForm()
+  const [form] = Form.useForm();
 
   const handleSubmit = () => {
     console.log(form);
-  }
+  };
 
   return (
     <Row
@@ -63,5 +63,5 @@ export default function LogIn () {
         </Form>
       </Col>
     </Row>
-  )
+  );
 }
