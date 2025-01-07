@@ -1,6 +1,6 @@
 // import "../../styles/SampleManagement/SampleManagement.css";
 
-export default function resultsAudit() {
+export default function ResultsAuditLabManager() {
   return (
     <div>
       <h1>Results and Audits</h1>

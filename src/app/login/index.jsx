@@ -22,7 +22,7 @@ export default function LogIn() {
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
-  const handleButtonClick = () => {
+  const onFinish = () => {
     navigate("/layout/homeLabManager");
   };
 
@@ -61,7 +61,7 @@ export default function LogIn() {
                 type="primary"
                 shape="round"
                 style={{ background: "#16D9CE", borderColor: "white" }}
-                onClick={handleButtonClick}>
+                onClick={onFinish}>
                 Log In
               </Button>
             </Form.Item>

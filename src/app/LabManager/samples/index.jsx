@@ -1,6 +1,6 @@
 // import "../../styles/SampleManagement/SampleManagement.css";
 
-export default function Sample() {
+export default function SampleLabManager() {
   return (
     <div>
       <h1>Samples</h1>

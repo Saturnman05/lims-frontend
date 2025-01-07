@@ -8,33 +8,37 @@ export function NavLabManager() {
   return (
     <nav className="nav-lab-header">
       <div className="navbar-logo">
-        <Link to="#" target="_blank" rel="noopener noreferrer">
+        <Link to="/layoutLabManager/homeLabManager" rel="noopener noreferrer">
           L.I.M.S
         </Link>
       </div>
       <ul className="nav-links">
         <li>
-          <CustomLink to="/layout/samples">Muestras</CustomLink>
+          <CustomLink to="/layoutLabManager/samples">Muestras</CustomLink>
         </li>
         <li>
-          <CustomLink to="/layout/resultsAudit">
+          <CustomLink to="/layoutLabManager/resultsAudit">
             Resultados y Auditoría
           </CustomLink>
         </li>
         <li>
-          <CustomLink to="/layout/informs">Informes</CustomLink>
+          <CustomLink to="/layoutLabManager/informs">Informes</CustomLink>
         </li>
         <li>
-          <CustomLink to="/layout/statistics">Estadísticas</CustomLink>
+          <CustomLink to="/layoutLabManager/statistics">
+            Estadísticas
+          </CustomLink>
         </li>
         <li>
-          <CustomLink to="/layout/management">Administración</CustomLink>
+          <CustomLink to="/layoutLabManager/management">
+            Administración
+          </CustomLink>
         </li>
         <li>
-          <CustomLink to="/layout/support">Soporte</CustomLink>
+          <CustomLink to="/layoutLabManager/support">Soporte</CustomLink>
         </li>
         <li>
-          <CustomLink to="/layout/account">
+          <CustomLink to="/layoutLabManager/account">
             <Avatar
               className="custom-avatar"
               size={30}

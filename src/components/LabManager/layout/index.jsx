@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 import { NavLabManager } from "../nav-lab-manager";
 import "../../../styles/LabManager/layout/index.css";
 
-export default function Layout() {
+export default function LayoutLabManager() {
   return (
     <div id="layout">
       {/* Static Background*/}
