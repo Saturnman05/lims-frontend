@@ -1,37 +1,9 @@
 import { Form, Button, Input, Row, Col } from "antd";
-import { logIn } from "../../api/login/index";
-import { useNavigate } from "react-router";
-
-const imgStyle = {
-  display: 'block',
-  width: 200,
-};
-
-const rowStyle = {
-  display: "flex", 
-  justifyContent: "center", 
-  minHeight: "100vh"
-};
-
-const centerStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center"
-};
+import { useLogin } from "../../hooks/login";
 
 export default function LogIn () {
   const [form] = Form.useForm();
-  const navigate = useNavigate();
-
-  const onFinish = async (values) => {
-    console.log(values);
-    try {
-      await logIn(values);
-      navigate("/layout/homeLabManager");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { onFinish, imgStyle, rowStyle, centerStyle } = useLogin();
 
   return (
     <Row
