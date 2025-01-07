@@ -23,7 +23,7 @@ export default function LogIn() {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/layout");
+    navigate("/layout/homeLabManager");
   };
 
   {

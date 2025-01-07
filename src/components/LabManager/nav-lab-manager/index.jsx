@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar } from "antd";
-import "../../styles/nav-lab-manager/index.css";
+import "../../../styles/LabManager/nav-lab-manager/index.css";
 
 export function NavLabManager() {
   return (
@@ -14,20 +14,18 @@ export function NavLabManager() {
       </div>
       <ul className="nav-links">
         <li>
-          <CustomLink to="/layout/sampleManagement">
-            Gestión de Muestras
+          <CustomLink to="/layout/samples">Muestras</CustomLink>
+        </li>
+        <li>
+          <CustomLink to="/layout/resultsAudit">
+            Resultados y Auditoría
           </CustomLink>
         </li>
         <li>
-          <CustomLink to="/layout/sampleAssignment">
-            Asignación de Muestras
-          </CustomLink>
+          <CustomLink to="/layout/informs">Informes</CustomLink>
         </li>
         <li>
-          <CustomLink to="/layout/results">Resultados</CustomLink>
-        </li>
-        <li>
-          <CustomLink to="/layout/information">Informes</CustomLink>
+          <CustomLink to="/layout/statistics">Estadísticas</CustomLink>
         </li>
         <li>
           <CustomLink to="/layout/management">Administración</CustomLink>

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import { NavLabManager } from "../nav-lab-manager";
-import "../../styles/layout/index.css";
+import "../../../styles/LabManager/layout/index.css";
 
 export default function Layout() {
   return (
