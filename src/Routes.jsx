@@ -8,8 +8,13 @@ import Layout from "./components/layout";
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
   { path: "/", element: <LogIn /> },
-  { path: "homeLabManager", element: <HomeLabManager /> },
-  { path: "sampleAssignation", element: <SampleAssignation /> },
-  { path: "sampleManagement", element: <SampleManagement /> },
-  { path: "layout", element: <Layout /> },
+  {
+    path: "layout",
+    element: <Layout />,
+    children: [
+      { path: "homeLabManager", element: <HomeLabManager /> },
+      { path: "sampleAssignation", element: <SampleAssignation /> },
+      { path: "sampleManagement", element: <SampleManagement /> },
+    ],
+  },
 ];

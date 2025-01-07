@@ -14,25 +14,29 @@ export function NavLabManager() {
       </div>
       <ul className="nav-links">
         <li>
-          <CustomLink to="/SampleManagement">Gestión de Muestras</CustomLink>
+          <CustomLink to="/layout/sampleManagement">
+            Gestión de Muestras
+          </CustomLink>
         </li>
         <li>
-          <CustomLink to="/SampleAssignment">Asignación de Muestras</CustomLink>
+          <CustomLink to="/layout/sampleAssignment">
+            Asignación de Muestras
+          </CustomLink>
         </li>
         <li>
-          <CustomLink to="/Results">Resultados</CustomLink>
+          <CustomLink to="/layout/results">Resultados</CustomLink>
         </li>
         <li>
-          <CustomLink to="/Information">Informes</CustomLink>
+          <CustomLink to="/layout/information">Informes</CustomLink>
         </li>
         <li>
-          <CustomLink to="/Management">Administración</CustomLink>
+          <CustomLink to="/layout/management">Administración</CustomLink>
         </li>
         <li>
-          <CustomLink to="/support">Soporte</CustomLink>
+          <CustomLink to="/layout/support">Soporte</CustomLink>
         </li>
         <li>
-          <CustomLink to="/Account">
+          <CustomLink to="/layout/account">
             <Avatar
               className="custom-avatar"
               size={30}
@@ -46,10 +50,10 @@ export function NavLabManager() {
 }
 
 function CustomLink({ to, children, ...props }) {
-  const path = useLocation();
+  const location = useLocation();
 
   return (
-    <li className={path === to ? "active" : ""}>
+    <li className={location.pathname === to ? "active" : ""}>
       <Link to={to} {...props}>
         {children}
       </Link>

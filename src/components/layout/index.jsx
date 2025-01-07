@@ -8,11 +8,12 @@ export default function Layout() {
       {/* Static Background*/}
       <div id="background"></div>
 
+      {/* Navigation */}
       <NavLabManager />
 
       {/* Main Container */}
       <div id="content">
-        <Outlet /> {/* Where the other pages will render */}
+        <Outlet /> {/* This is where child routes will render */}
       </div>
     </div>
   );
