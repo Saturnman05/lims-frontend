@@ -1,4 +1,6 @@
 import { Form, Button, Input, Row, Col } from "antd";
+import { logIn } from "../../api/login/index";
+import { useNavigate } from "react-router";
 
 const imgStyle = {
   display: 'block',
@@ -19,9 +21,12 @@ const centerStyle = {
 
 export default function LogIn () {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    console.log(form);
+  const onFinish = async (values) => {
+    console.log(values);
+    await logIn(values);
+    navigate("/layout/homeLabManager");
   };
 
   return (
@@ -43,19 +48,20 @@ export default function LogIn () {
           layout="vertical"
           form={form}
           style={{ maxWidth: 600 }}
+          onFinish={onFinish}
         >
-          <Form.Item label="Usuario" className="inter-font">
-            <Input type="email" />
+          <Form.Item label="Usuario" name="username" className="inter-font">
+            <Input />
           </Form.Item>
-          <Form.Item label="Contraseña" className="inter-font">
-            <Input type="password" />
+          <Form.Item label="Contraseña" name="password" className="inter-font">
+            <Input type="password"/>
           </Form.Item>
           <Form.Item style={centerStyle}>
-            <Button 
-              type="primary" 
+            <Button
+              type="primary"
+              htmlType="submit" 
               shape="round" 
               style={{ background: "#16D9CE", borderColor: "white" }}
-              onClick={handleSubmit}
             >
               Log In
             </Button>

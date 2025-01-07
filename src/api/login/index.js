@@ -1,6 +1,7 @@
-import { API_URL } from "../../utils/constats"
+// import { API_URL } from "../../utils/constats"
+import users from "./mock-users.json";
 
-export async function LogIn (user) {
+export async function logIn (user) {
   /*try {
     const response = await fetch(`${API_URL}/login`, {
       method: "post",
@@ -11,6 +12,7 @@ export async function LogIn (user) {
   } catch (error) {
     console.error("Error al iniciar sesión", error)
   }*/
-  const token = "1";
+  
+  const token = users.find(userData => userData.username === user.username).id;
   localStorage.setItem("jwt", token);
 }
