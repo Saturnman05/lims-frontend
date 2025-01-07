@@ -54,10 +54,30 @@ export default function LogIn () {
           style={{ maxWidth: 600 }}
           onFinish={onFinish}
         >
-          <Form.Item label="Usuario" name="username" className="inter-font">
+          <Form.Item 
+            label="Usuario"
+            name="username"
+            className="inter-font"
+            rules={[
+              {
+                required: true,
+                message: "Escribe un nombre de usuario",
+              },
+            ]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item label="Contraseña" name="password" className="inter-font">
+          <Form.Item 
+            label="Contraseña" 
+            name="password" 
+            className="inter-font"
+            rules={[
+              {
+                required: true,
+                message: "Escribe la contraseña para iniciar sesión",
+              },
+            ]}
+          >
             <Input type="password"/>
           </Form.Item>
           <Form.Item style={centerStyle}>
