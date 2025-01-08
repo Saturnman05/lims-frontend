@@ -1,5 +1,5 @@
 import { Breadcrumb } from "antd";
-import ConfigProvider, { ConfigConsumer } from "antd/es/config-provider";
+import ConfigProvider from "antd/es/config-provider";
 export default function ManagemenLabManager() {
   return (
     <ConfigProvider
@@ -9,16 +9,10 @@ export default function ManagemenLabManager() {
       <Breadcrumb
         items={[
           {
-            title: "Home",
+            title: <a href="/layout-lab-manager/home-lab-manager">Home</a>,
           },
           {
-            title: <a href="">Administracion</a>,
-          },
-          {
-            title: <a href="">Gestion de usuarios</a>,
-          },
-          {
-            title: "An Application",
+            title: "Administración",
           },
         ]}
       />
