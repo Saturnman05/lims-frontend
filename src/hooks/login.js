@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { logIn } from "../api/login";
+import { logIn, mockLogIn } from "../api/login";
 
 export function useLogin() {
   const imgStyle = {
@@ -22,9 +22,9 @@ export function useLogin() {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
-    console.log(values);
+    console.log("en el onfinish:", values);
     try {
-      await logIn(values);
+      await mockLogIn(values);
       navigate("/layout/homeLabManager");
     } catch (error) {
       console.error(error);
