@@ -1,9 +1,9 @@
-import { Button } from "antd";
-import "../../styles/custom-button/styles.css";
+import { Button, ConfigProvider } from "antd";
+// import "../../styles/custom-button/styles.css";
 import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
-export function CustomButton(props) {
+export function CustomButton (props) {
   const { children } = props;
   const elementRef = useRef(null);
 
@@ -24,9 +24,19 @@ export function CustomButton(props) {
   }, []);
 
   return (
-    <Button className="border-gradient" ref={elementRef} {...props}>
-      <div>{children}</div>
-    </Button>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "#16D9CE",
+        },
+      }}
+    >
+      <Button ref={elementRef} variant="solid" {...props}>
+        <div>
+          {children}
+        </div>
+      </Button>
+    </ConfigProvider>
   );
 }
 

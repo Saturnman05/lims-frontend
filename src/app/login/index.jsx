@@ -25,15 +25,15 @@ export default function LogIn () {
       <LoginFormPage
         submitter={{ 
           searchConfig: { 
-            submitText: "LogIn" 
+            submitText: "LogIn",
           }, 
           submitButtonProps: { 
             style: { 
               background: "#16D9CE", 
               borderColor: "white", 
-              width: "100%" 
-            } 
-          }
+              width: "100%",
+            },
+          },
         }}
         backgroundImageUrl="https://mdn.alipayobjects.com/huamei_gcee1x/afts/img/A*y0ZTS6WLwvgAAAAAAAAAAAAADml6AQ/fmt.webp"
         logo="https://cdn-icons-png.flaticon.com/512/257/257815.png"
@@ -58,52 +58,48 @@ export default function LogIn () {
         onFinish={onFinish}
         form={form}
       >
-        {(
-          <>
-            <ProFormText
-              name="username"
-              fieldProps={{
-                size: 'large',
-                prefix: (
-                  <UserOutlined
-                    style={{
-                      color: token.colorText,
-                    }}
-                    className={'prefixIcon'}
-                  />
-                ),
-              }}
-              placeholder={'user'}
-              rules={[
-                {
-                  required: true,
-                  message: 'Escribe tu usuario!',
-                },
-              ]}
-            />
-            <ProFormText.Password
-              name="password"
-              fieldProps={{
-                size: 'large',
-                prefix: (
-                  <LockOutlined
-                    style={{
-                      color: token.colorText,
-                    }}
-                    className={'prefixIcon'}
-                  />
-                ),
-              }}
-              placeholder={'ant.design'}
-              rules={[
-                {
-                  required: true,
-                  message: 'Escribe tu contraseña',
-                },
-              ]}
-            />
-          </>
-        )}
+        <ProFormText
+          name="username"
+          fieldProps={{
+            size: 'large',
+            prefix: (
+              <UserOutlined
+                style={{
+                  color: token.colorText,
+                }}
+                className={'prefixIcon'}
+              />
+            ),
+          }}
+          placeholder={'user'}
+          rules={[
+            {
+              required: true,
+              message: 'Escribe tu usuario!',
+            },
+          ]}
+        />
+        <ProFormText.Password
+          name="password"
+          fieldProps={{
+            size: 'large',
+            prefix: (
+              <LockOutlined
+                style={{
+                  color: token.colorText,
+                }}
+                className={'prefixIcon'}
+              />
+            ),
+          }}
+          placeholder={'ant.design'}
+          rules={[
+            {
+              required: true,
+              message: 'Escribe tu contraseña',
+            },
+          ]}
+        />
       </LoginFormPage>
     </div>
   );
