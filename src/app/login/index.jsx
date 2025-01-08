@@ -26,7 +26,7 @@ export default function LogIn() {
   const onFinish = async (values) => {
     console.log(values);
     await logIn(values);
-    navigate("/layoutLabManager/homeLabManager");
+    navigate("/layout-lab-manager/home-lab-manager");
   };
 
   return (

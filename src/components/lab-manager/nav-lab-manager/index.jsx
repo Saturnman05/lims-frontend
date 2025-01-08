@@ -2,43 +2,41 @@ import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar } from "antd";
-import "../../../styles/LabManager/nav-lab-manager/index.css";
+import "../../../styles/lab-manager/nav-lab-manager/index.css";
 
 export function NavLabManager() {
   return (
     <nav className="nav-lab-header">
       <div className="navbar-logo">
-        <Link to="/layoutLabManager/homeLabManager" rel="noopener noreferrer">
-          L.I.M.S
-        </Link>
+        <Link to="/layout-lab-manager/home-lab-manager">L.I.M.S</Link>
       </div>
       <ul className="nav-links">
         <li>
-          <CustomLink to="/layoutLabManager/samples">Muestras</CustomLink>
+          <CustomLink to="/layout-lab-manager/samples">Muestras</CustomLink>
         </li>
         <li>
-          <CustomLink to="/layoutLabManager/resultsAudit">
+          <CustomLink to="/layout-lab-manager/results-audit">
             Resultados y Auditoría
           </CustomLink>
         </li>
         <li>
-          <CustomLink to="/layoutLabManager/informs">Informes</CustomLink>
+          <CustomLink to="/layout-lab-manager/informs">Informes</CustomLink>
         </li>
         <li>
-          <CustomLink to="/layoutLabManager/statistics">
+          <CustomLink to="/layout-lab-manager/statistics">
             Estadísticas
           </CustomLink>
         </li>
         <li>
-          <CustomLink to="/layoutLabManager/management">
+          <CustomLink to="/layout-lab-manager/management">
             Administración
           </CustomLink>
         </li>
         <li>
-          <CustomLink to="/layoutLabManager/support">Soporte</CustomLink>
+          <CustomLink to="/layout-lab-manager/support">Soporte</CustomLink>
         </li>
         <li>
-          <CustomLink to="/layoutLabManager/account">
+          <CustomLink to="/layout-lab-manager/account">
             <Avatar
               className="custom-avatar"
               size={30}

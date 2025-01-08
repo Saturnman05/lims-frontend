@@ -1,11 +1,11 @@
-import HomeLabManager from "./app/labManager/homeLabManager";
-import SampleLabManager from "./app/labManager/samples";
-import ResultsAuditLabManager from "./app/labManager/resultsAudit";
-import LayoutLabManager from "./components/LabManager/layout";
-import InformsLabManager from "./app/labManager/informs";
-import StatisticsLabManager from "./app/labManager/statistics";
-import ManagementLabManager from "./app/labManager/management";
-import SupportLabManager from "./app/labManager/support";
+import HomeLabManager from "./app/lab-manager/home-lab-manager/index.jsx";
+import SampleLabManager from "./app/lab-manager/samples";
+import ResultsAuditLabManager from "./app/lab-manager/results-audit/index.jsx";
+import LayoutLabManager from "./components/lab-manager/layout/index.jsx";
+import InformsLabManager from "./app/lab-manager/informs";
+import StatisticsLabManager from "./app/lab-manager/statistics";
+import ManagementLabManager from "./app/lab-manager/management";
+import SupportLabManager from "./app/lab-manager/support";
 import LogIn from "./app/login/index.jsx";
 import NotFoundPage from "./app/not-found/index.jsx";
 
@@ -13,12 +13,12 @@ export const Routes = [
   { path: "*", element: <NotFoundPage /> },
   { path: "/", element: <LogIn /> },
   {
-    path: "layoutLabManager",
+    path: "layout-lab-manager",
     element: <LayoutLabManager />,
     children: [
-      { path: "homeLabManager", element: <HomeLabManager /> },
+      { path: "home-lab-manager", element: <HomeLabManager /> },
       { path: "samples", element: <SampleLabManager /> },
-      { path: "resultsAudit", element: <ResultsAuditLabManager /> },
+      { path: "results-audit", element: <ResultsAuditLabManager /> },
       { path: "informs", element: <InformsLabManager /> },
       { path: "statistics", element: <StatisticsLabManager /> },
       { path: "management", element: <ManagementLabManager /> },
