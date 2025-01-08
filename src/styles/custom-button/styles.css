@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,500&display=swap");
+
+.border-gradient {
+  --c: #171717;
+  --p: 10%;
+  background: linear-gradient(var(--c), var(--c)) padding-box,
+    conic-gradient(
+        from var(--gradient-angle, 0deg),
+        transparent,
+        white var(--p),
+        transparent calc(var(--p) * 2)
+      )
+      border-box;
+  border: 1px solid transparent;
+}
+
+button {
+  width: 250px;
+  height: 80px;
+  border-radius: 3rem;
+  color: white;
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+}
