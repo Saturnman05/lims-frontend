@@ -1,69 +1,110 @@
-import { Form, Button, Input, Row, Col } from "antd";
+import { Form, theme } from 'antd';
+import {
+  LockOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
+import {
+  LoginFormPage,
+  ProFormText,
+} from '@ant-design/pro-components';
 import { useLogin } from "../../hooks/login";
+import video from "../../assets/video3.mp4";
 
 export default function LogIn () {
   const [form] = Form.useForm();
-  const { onFinish, imgStyle, rowStyle, centerStyle } = useLogin();
+  const { onFinish } = useLogin();
+  const { token } = theme.useToken();
 
   return (
-    <Row
-      align="middle"
-      style={rowStyle}
+    <div
+      style={{
+        backgroundColor: 'white',
+        height: '100vh',
+      }}
     >
-      <Col span={8} style={{ ...centerStyle, marginRight: "200px" }}>
-        <img
-          alt="logo"
-          src="https://cdn-icons-png.flaticon.com/512/257/257815.png"
-          style={imgStyle}
-        />
-        <p style={{ fontFamily: "DM Serif Text" }}>Integridad y seguridad alimentaria, garantizadas</p>
-      </Col>
-      <Col span={8}>
-        <h1 style={{ ...centerStyle, fontFamily: "DM Serif Text" }}>L.I.M.S.</h1>
-        <Form
-          layout="vertical"
-          form={form}
-          style={{ maxWidth: 600 }}
-          onFinish={onFinish}
-        >
-          <Form.Item 
-            label="Usuario"
-            name="username"
-            className="inter-font"
-            rules={[
-              {
-                required: true,
-                message: "Escribe un nombre de usuario",
-              },
-            ]}
+      <LoginFormPage
+        submitter={{ 
+          searchConfig: { 
+            submitText: "LogIn" 
+          }, 
+          submitButtonProps: { 
+            style: { 
+              background: "#16D9CE", 
+              borderColor: "white", 
+              width: "100%" 
+            } 
+          }
+        }}
+        backgroundImageUrl="https://mdn.alipayobjects.com/huamei_gcee1x/afts/img/A*y0ZTS6WLwvgAAAAAAAAAAAAADml6AQ/fmt.webp"
+        logo="https://cdn-icons-png.flaticon.com/512/257/257815.png"
+        backgroundVideoUrl={video}
+        title="LIMS"
+        containerStyle={{
+          backgroundColor: 'rgba(230, 230, 230, 0.65)',
+          backdropFilter: 'blur(4px)',
+        }}
+        subTitle="Integridad y seguridad alimentaria, garantizadas"
+        actions={
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column',
+            }}
           >
-            <Input />
-          </Form.Item>
-          <Form.Item 
-            label="Contraseña" 
-            name="password" 
-            className="inter-font"
-            rules={[
-              {
-                required: true,
-                message: "Escribe la contraseña para iniciar sesión",
-              },
-            ]}
-          >
-            <Input type="password"/>
-          </Form.Item>
-          <Form.Item style={centerStyle}>
-            <Button
-              type="primary"
-              htmlType="submit" 
-              shape="round" 
-              style={{ background: "#16D9CE", borderColor: "white" }}
-            >
-              Log In
-            </Button>
-          </Form.Item>
-        </Form>
-      </Col>
-    </Row>
+          </div>
+        }
+        onFinish={onFinish}
+        form={form}
+      >
+        {(
+          <>
+            <ProFormText
+              name="username"
+              fieldProps={{
+                size: 'large',
+                prefix: (
+                  <UserOutlined
+                    style={{
+                      color: token.colorText,
+                    }}
+                    className={'prefixIcon'}
+                  />
+                ),
+              }}
+              placeholder={'user'}
+              rules={[
+                {
+                  required: true,
+                  message: 'Escribe tu usuario!',
+                },
+              ]}
+            />
+            <ProFormText.Password
+              name="password"
+              fieldProps={{
+                size: 'large',
+                prefix: (
+                  <LockOutlined
+                    style={{
+                      color: token.colorText,
+                    }}
+                    className={'prefixIcon'}
+                  />
+                ),
+              }}
+              placeholder={'ant.design'}
+              rules={[
+                {
+                  required: true,
+                  message: 'Escribe tu contraseña',
+                },
+              ]}
+            />
+          </>
+        )}
+      </LoginFormPage>
+    </div>
   );
 }
