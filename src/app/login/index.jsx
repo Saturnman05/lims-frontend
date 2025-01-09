@@ -23,14 +23,13 @@ export default function LogIn() {
       }}
     >
       <LoginFormPage
-        submitter={{ 
+        submitter={{
           searchConfig: { 
-            submitText: "LogIn",
+            submitText: "Iniciar sesión",
           }, 
           submitButtonProps: { 
             style: { 
               background: "#16D9CE", 
-              borderColor: "white", 
               width: "100%",
             },
           },
@@ -42,6 +41,7 @@ export default function LogIn() {
         containerStyle={{
           backgroundColor: 'rgba(230, 230, 230, 0.65)',
           backdropFilter: 'blur(4px)',
+          marginRight: "5rem",
         }}
         subTitle="Integridad y seguridad alimentaria, garantizadas"
         actions={

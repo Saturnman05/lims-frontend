@@ -8,10 +8,14 @@ export function PageWrapper (props) {
       theme={{
         components: { Breadcrumb: { separatorColor: "rgba(22, 217, 206)" } },
       }}>
-      <Breadcrumb
-        items={breadCrumbItems}
-      />
-      {children}
+      <div className="flex flex-col w-full">
+        <div>
+          <Breadcrumb items={breadCrumbItems} />
+        </div>
+        <div className="flex">
+          {children}
+        </div>
+      </div>
     </ConfigProvider>
   );
 }
