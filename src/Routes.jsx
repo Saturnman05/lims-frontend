@@ -1,22 +1,40 @@
-import LogIn from "./app/Login"
-import NotFoundPage from "./app/NotFound"
+import HomeLabManager from "./app/lab-manager/home-lab-manager/index.jsx";
+import SampleLabManager from "./app/lab-manager/samples";
+import ResultsAuditLabManager from "./app/lab-manager/results-audit/index.jsx";
+import LayoutLabManager from "./components/lab-manager/layout/index.jsx";
+import InformsLabManager from "./app/lab-manager/informs";
+import StatisticsLabManager from "./app/lab-manager/statistics";
+import ManagementLabManager from "./app/lab-manager/management";
+import SupportLabManager from "./app/lab-manager/support";
+import LogIn from "./app/login/index.jsx";
+import NotFoundPage from "./app/not-found/index.jsx";
+import RegisterUser from "./app/lab-manager/management/users/register-master/index.jsx";
 
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
   { path: "/", element: <LogIn /> },
-//  {
-//    path: "app",
-//    element: <AppRouterPage />,
-//    children: [
-//      { path: "dashboard", element: <DashboardPage /> },
-//      { path: "admin/people", element: <PeoplePage />},
-//      { path: "admin/vehicles", element: <VehiclesPage />},
-//      { path: "admin/users", element: <UsersPage /> },
-//      { path: "admin/employees", element: <EmployeesPage /> },
-//      { path: "request-fuel", element: <RequestFuelView /> },
-//      { path: "assign/request", element: <DeliveryByRequestView /> },        
-//      { path: "assign/static", element: <DeliveryMonthlyView /> }, 
-//      { path: "register-tickets", element: <TicketRegistration /> },     
-//    ],
-//  },
-]
+  {
+    path: "layout-lab-manager",
+    element: <LayoutLabManager />,
+    children: [
+      { path: "home-lab-manager", element: <HomeLabManager /> },
+      { path: "samples", element: <SampleLabManager /> },
+      { path: "results-audit", element: <ResultsAuditLabManager /> },
+      { path: "informs", element: <InformsLabManager /> },
+      { path: "statistics", element: <StatisticsLabManager /> },
+      { 
+        path: "management", 
+        children: [
+          { path: "", element: <ManagementLabManager /> },
+          {
+            path: "users",
+            children: [
+              { path: "register", element: <RegisterUser /> },
+            ]
+          }
+        ] 
+      },
+      { path: "support", element: <SupportLabManager /> },
+    ],
+  },
+];
