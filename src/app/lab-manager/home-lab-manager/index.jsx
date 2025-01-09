@@ -31,43 +31,39 @@ const formPages = [
 ];
 
 export default function HomeLabManager() {
-  const [currentPage, setCurrentPage] = useState(0)
-  const [formData, setFormData] = useState({})
+  const [currentPage, setCurrentPage] = useState(0);
+  const [formData, setFormData] = useState({});
 
   const handleInputChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-  }
+  };
 
   const nextPage = () => {
     if (currentPage < formPages.length - 1) {
       setCurrentPage(currentPage + 1)
     }
-  }
+  };
 
   const prevPage = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1)
     }
-  }
+  };
 
   return (
-    <PageWrapper
-      breadCrumbItems={[
-        { title: <Link>Home</Link> },
-      ]}
-    >
+    <PageWrapper breadCrumbItems={[{ title: <Link>Home</Link> }]}>
       <FormNavigation 
         categories={formPages.map((page) => page.category)}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
       <div className="flex-1 p-6 flex flex-col">
-        <form onSubmit={handleSubmit} className="flex-1 p-6">
+        <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
           <FormWrapper
             pageData={formPages[currentPage]}
             formData={formData}

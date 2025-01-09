@@ -4,7 +4,7 @@ import { Checkbox, Input } from "antd";
 export function  FormWrapper (props) {
   const { pageData, formData, handleInputChange } = props;
   return (
-    <div className="flex justify-center items-start min-h-[calc(100vh-200px)]">
+    <div className="flex justify-center items-start min-h-[60vh]">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4">{pageData.category}</h2>
         {pageData.fields.map((field) => (
