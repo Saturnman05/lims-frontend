@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { PageWrapper } from "../../../components/wrappers/page-wrapper";
+import { Input } from "antd";
 
 export default function ManagemenLabManager() {
   return (
@@ -9,7 +10,7 @@ export default function ManagemenLabManager() {
         { title: <Link>Administración</Link> },
       ]}
     >
-      <></>
+      <Input/>
     </PageWrapper>
   );
 }

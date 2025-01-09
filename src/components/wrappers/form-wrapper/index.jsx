@@ -1,11 +1,10 @@
 import PropTypes from "prop-types";
 import { Checkbox, Input } from "antd";
-import { PageWrapper } from "../page-wrapper";
 
 export function  FormWrapper (props) {
-  const { breadCrumbItems, pageData, formData, handleInputChange, children } = props;
+  const { pageData, formData, handleInputChange, children } = props;
   return (
-    <PageWrapper breadCrumbItems={breadCrumbItems}>
+    <>
       <h2 className="text-2xl font-bold mb-4">{pageData.category}</h2>
       {pageData.fields.map((field) => (
         <div key={field.name} className="mb-4">
@@ -27,7 +26,7 @@ export function  FormWrapper (props) {
         </div>
       ))}
       {children}
-    </PageWrapper>
+    </>
   );
 }
 

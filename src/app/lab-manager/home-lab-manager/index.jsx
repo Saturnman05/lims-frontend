@@ -3,6 +3,7 @@ import { FormNavigation, FormWrapper } from "../../../components/wrappers/form-w
 import { Link } from "react-router";
 import { useState } from "react";
 import { Button } from "antd";
+import { PageWrapper } from "../../../components/wrappers/page-wrapper";
 
 const formPages = [
   {
@@ -55,7 +56,11 @@ export default function HomeLabManager() {
   }
 
   return (
-    <>
+    <PageWrapper
+      breadCrumbItems={[
+        { title: <Link>Home</Link> },
+      ]}
+    >
       <FormNavigation 
         categories={formPages.map((page) => page.category)}
         currentPage={currentPage}
@@ -84,6 +89,6 @@ export default function HomeLabManager() {
           </div>
         </FormWrapper>
       </form>
-    </>
+    </PageWrapper>
   );
 }
