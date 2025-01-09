@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { logIn, mockLogIn } from "../api/login";
+import { mockLogIn } from "../api/login";
 
 export function useLogin() {
   const imgStyle = {
