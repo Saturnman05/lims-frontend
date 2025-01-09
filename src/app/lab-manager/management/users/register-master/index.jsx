@@ -31,7 +31,7 @@ const formPages = [
   },
 ];
 
-export default function RegisterMaster () {
+export default function RegisterUser () {
   return (
     <FormWrapper 
       formPages={formPages} 

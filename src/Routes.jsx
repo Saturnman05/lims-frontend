@@ -8,7 +8,7 @@ import ManagementLabManager from "./app/lab-manager/management";
 import SupportLabManager from "./app/lab-manager/support";
 import LogIn from "./app/login/index.jsx";
 import NotFoundPage from "./app/not-found/index.jsx";
-import RegisterMaster from "./app/lab-manager/management/users/register-master/index.jsx";
+import RegisterUser from "./app/lab-manager/management/users/register-master/index.jsx";
 
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
@@ -29,7 +29,7 @@ export const Routes = [
           {
             path: "users",
             children: [
-              { path: "register-master", element: <RegisterMaster /> },
+              { path: "register", element: <RegisterUser /> },
             ]
           }
         ] 

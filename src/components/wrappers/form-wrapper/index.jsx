@@ -35,7 +35,7 @@ export function FormWrapper (props) {
 
   return (
     <PageWrapper breadCrumbItems={breadCrumbItems}>
-      <FormNavigation 
+      <FormNavigation
         categories={formPages.map((page) => page.category)}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
@@ -77,7 +77,7 @@ export function  FormContent (props) {
   const { pageData, formData, handleInputChange } = props;
   
   return (
-    <div className="flex justify-center items-start min-h-[55vh]">
+    <div className="flex justify-center items-start max-h-[calc(100%-1rem)]">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         {/* <h2 className="text-2xl font-bold mb-4">{pageData.category}</h2>*/}
         {pageData.fields.map((field) => (

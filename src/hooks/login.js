@@ -25,7 +25,7 @@ export function useLogin() {
     console.log("en el onfinish:", values);
     try {
       await mockLogIn(values);
-      navigate("/layout-lab-manager/home-lab-manager");
+      navigate("/layout-lab-manager/management/users/register");
     } catch (error) {
       console.error(error);
     }
