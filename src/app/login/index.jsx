@@ -1,72 +1,106 @@
-import { Form, Button, Input, Row, Col } from "antd";
-import { logIn } from "../../api/login/index";
-import { useNavigate } from "react-router";
-
-const imgStyle = {
-  display: "block",
-  width: 200,
-};
-
-const rowStyle = {
-  display: "flex",
-  justifyContent: "center",
-  minHeight: "100vh",
-};
-
-const centerStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-};
+import { Form, theme } from 'antd';
+import {
+  LockOutlined,
+  UserOutlined,
+} from '@ant-design/icons';
+import {
+  LoginFormPage,
+  ProFormText,
+} from '@ant-design/pro-components';
+import { useLogin } from "../../hooks/login";
+import video from "../../assets/video3.mp4";
 
 export default function LogIn() {
   const [form] = Form.useForm();
-  const navigate = useNavigate();
-
-  const onFinish = async (values) => {
-    console.log(values);
-    await logIn(values);
-    navigate("/layout-lab-manager/home-lab-manager");
-  };
+  const { onFinish } = useLogin();
+  const { token } = theme.useToken();
 
   return (
-    <Row align="middle" style={rowStyle}>
-      <Col span={8} style={{ ...centerStyle, marginRight: "200px" }}>
-        <img
-          alt="logo"
-          src="https://cdn-icons-png.flaticon.com/512/257/257815.png"
-          style={imgStyle}
+    <div
+      style={{
+        backgroundColor: 'white',
+        height: '100vh',
+      }}
+    >
+      <LoginFormPage
+        submitter={{ 
+          searchConfig: { 
+            submitText: "LogIn",
+          }, 
+          submitButtonProps: { 
+            style: { 
+              background: "#16D9CE", 
+              borderColor: "white", 
+              width: "100%",
+            },
+          },
+        }}
+        backgroundImageUrl="https://mdn.alipayobjects.com/huamei_gcee1x/afts/img/A*y0ZTS6WLwvgAAAAAAAAAAAAADml6AQ/fmt.webp"
+        logo="https://cdn-icons-png.flaticon.com/512/257/257815.png"
+        backgroundVideoUrl={video}
+        title="LIMS"
+        containerStyle={{
+          backgroundColor: 'rgba(230, 230, 230, 0.65)',
+          backdropFilter: 'blur(4px)',
+        }}
+        subTitle="Integridad y seguridad alimentaria, garantizadas"
+        actions={
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'column',
+            }}
+          >
+          </div>
+        }
+        onFinish={onFinish}
+        form={form}
+      >
+        <ProFormText
+          name="username"
+          fieldProps={{
+            size: 'large',
+            prefix: (
+              <UserOutlined
+                style={{
+                  color: token.colorText,
+                }}
+                className={'prefixIcon'}
+              />
+            ),
+          }}
+          placeholder={'user'}
+          rules={[
+            {
+              required: true,
+              message: 'Escribe tu usuario!',
+            },
+          ]}
         />
-        <p style={{ fontFamily: "DM Serif Text" }}>
-          Integridad y seguridad alimentaria, garantizadas
-        </p>
-      </Col>
-      <Col span={8}>
-        <h1 style={{ ...centerStyle, fontFamily: "DM Serif Text" }}>
-          L.I.M.S.
-        </h1>
-        <Form
-          layout="vertical"
-          form={form}
-          style={{ maxWidth: 600 }}
-          onFinish={onFinish}>
-          <Form.Item label="Usuario" name="username" className="inter-font">
-            <Input />
-          </Form.Item>
-          <Form.Item label="Contraseña" name="password" className="inter-font">
-            <Input type="password" />
-          </Form.Item>
-          <Form.Item style={centerStyle}>
-            <Button
-              type="primary"
-              htmlType="submit"
-              shape="round"
-              style={{ background: "#16D9CE", borderColor: "white" }}>
-              Log In
-            </Button>
-          </Form.Item>
-        </Form>
-      </Col>
-    </Row>
+        <ProFormText.Password
+          name="password"
+          fieldProps={{
+            size: 'large',
+            prefix: (
+              <LockOutlined
+                style={{
+                  color: token.colorText,
+                }}
+                className={'prefixIcon'}
+              />
+            ),
+          }}
+          placeholder={'ant.design'}
+          rules={[
+            {
+              required: true,
+              message: 'Escribe tu contraseña',
+            },
+          ]}
+        />
+      </LoginFormPage>
+    </div>
   );
 }

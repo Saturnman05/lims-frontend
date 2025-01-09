@@ -1,22 +1,15 @@
-import { Breadcrumb } from "antd";
-import ConfigProvider from "antd/es/config-provider";
+import { PageWrapper } from "../../../components/wrappers/page-wrapper";
+import { Link } from "react-router";
 
 export default function SupportLabManager() {
   return (
-    <ConfigProvider
-      theme={{
-        components: { Breadcrumb: { separatorColor: "rgba(22, 217, 206)" } },
-      }}>
-      <Breadcrumb
-        items={[
-          {
-            title: <a href="/layout-lab-manager/home-lab-manager">Home</a>,
-          },
-          {
-            title: "Soporte",
-          },
-        ]}
-      />
-    </ConfigProvider>
+    <PageWrapper
+      breadCrumbItems={[
+        { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
+        { title: <Link>Soporte</Link> },
+      ]}
+    >
+      <></>
+    </PageWrapper>
   );
 }
