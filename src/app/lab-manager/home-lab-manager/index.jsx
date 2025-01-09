@@ -21,6 +21,7 @@ const formPages = [
     category: 'Preferences',
     fields: [
       { name: 'favoriteColor', label: 'Favorite Color', type: 'text' },
+      { name: 'foofd', label: 'bar', type: 'select', options: [{ value: "1", label: "1" }, { value: "2", label: "2" }, { value: "3", label: "3" }], },
       { name: 'newsletter', label: 'Subscribe to Newsletter', type: 'checkbox' },
     ],
   },

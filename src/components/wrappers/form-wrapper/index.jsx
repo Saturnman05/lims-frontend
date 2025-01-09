@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Checkbox, Input, Button } from "antd";
+import { Checkbox, Input, Button, Select } from "antd";
 import { useState } from "react";
 import { PageWrapper } from "../page-wrapper";
 
@@ -81,19 +81,25 @@ export function  FormContent (props) {
         {pageData.fields.map((field) => (
           <div key={field.name} className="mb-4">
             <label htmlFor={field.name} className="block mb-2">{field.label}</label>
-            {field.type === "checkbox" ? (
+            {field.type === "checkbox" && (
               <Checkbox
                 id={field.name}
                 checked={formData[field.name] === "true"}
                 onChange={(checked) => handleInputChange(field.name, checked ? "true" : "false")}
               />
-            ) : (
+            )}
+
+            {(field.type === "input" || field.type === "text" || field.type === "email") && (
               <Input 
                 type={field.type}
                 id={field.name}
                 value={formData[field.name] || ""}
                 onChange={(e) => handleInputChange(field.name, e.target.value)}
               />
+            )}
+
+            {field.type === "select" && (
+              <Select defaultValue={field.name} options={field.options} className="w-full" />
             )}
           </div>
         ))}
@@ -111,7 +117,8 @@ FormContent.propTypes = {
         name: PropTypes.string,
         label: PropTypes.string,
         type: PropTypes.string,
-      })  
+        options: PropTypes.array,
+      }),
     ),
   },
   formData: PropTypes.array,
