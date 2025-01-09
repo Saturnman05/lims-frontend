@@ -2,31 +2,32 @@ import PropTypes from "prop-types";
 import { Checkbox, Input } from "antd";
 
 export function  FormWrapper (props) {
-  const { pageData, formData, handleInputChange, children } = props;
+  const { pageData, formData, handleInputChange } = props;
   return (
-    <>
-      <h2 className="text-2xl font-bold mb-4">{pageData.category}</h2>
-      {pageData.fields.map((field) => (
-        <div key={field.name} className="mb-4">
-          <label htmlFor={field.name}>{field.label}</label>
-          {field.type === "checkbox" ? (
-            <Checkbox
-              id={field.name}
-              checked={formData[field.name] === "true"}
-              onChange={(checked) => handleInputChange(field.name, checked ? "true" : "false")}
-            />
-          ) : (
-            <Input 
-              type={field.type}
-              id={field.name}
-              value={formData[field.name] || ""}
-              onChange={(e) => handleInputChange(field.name, e.target.value)}
-            />
-          )}
-        </div>
-      ))}
-      {children}
-    </>
+    <div className="flex justify-center items-start min-h-[calc(100vh-200px)]">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <h2 className="text-2xl font-bold mb-4">{pageData.category}</h2>
+        {pageData.fields.map((field) => (
+          <div key={field.name} className="mb-4">
+            <label htmlFor={field.name} className="block mb-2">{field.label}</label>
+            {field.type === "checkbox" ? (
+              <Checkbox
+                id={field.name}
+                checked={formData[field.name] === "true"}
+                onChange={(checked) => handleInputChange(field.name, checked ? "true" : "false")}
+              />
+            ) : (
+              <Input 
+                type={field.type}
+                id={field.name}
+                value={formData[field.name] || ""}
+                onChange={(e) => handleInputChange(field.name, e.target.value)}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

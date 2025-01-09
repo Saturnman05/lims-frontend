@@ -66,29 +66,27 @@ export default function HomeLabManager() {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
-      <form onSubmit={handleSubmit} className="flex-1 p-6">
-        <FormWrapper 
-          breadCrumbItems={[
-            { title: <Link>Home</Link> },
-          ]}
-          pageData={formPages[currentPage]}
-          formData={formData}
-          handleInputChange={handleInputChange}
-        >
-          <div className="mt-6 flex justify-between">
-            <Button color="default" onClick={prevPage} disabled={currentPage === 0}>
-              Previous
-            </Button>
-            {currentPage === formPages.length - 1 ? (
-              <Button color="default" htmlType="submit">Submit</Button>
-            ) : (
-              <Button color="default" onClick={nextPage}>
-                Next
+      <div className="flex-1 p-6 flex flex-col">
+        <form onSubmit={handleSubmit} className="flex-1 p-6">
+          <FormWrapper
+            pageData={formPages[currentPage]}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+            <div className="mt-6 flex justify-between">
+              <Button color="default" onClick={prevPage} disabled={currentPage === 0}>
+                Previous
               </Button>
-            )}
-          </div>
-        </FormWrapper>
-      </form>
+              {currentPage === formPages.length - 1 ? (
+                <Button color="default" htmlType="submit">Submit</Button>
+              ) : (
+                <Button color="default" onClick={nextPage}>
+                  Next
+                </Button>
+              )}
+            </div>
+        </form>
+      </div>
     </PageWrapper>
   );
 }
