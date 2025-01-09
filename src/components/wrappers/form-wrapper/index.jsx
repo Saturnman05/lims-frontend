@@ -1,7 +1,78 @@
 import PropTypes from "prop-types";
-import { Checkbox, Input } from "antd";
+import { Checkbox, Input, Button } from "antd";
+import { useState } from "react";
+import { PageWrapper } from "../page-wrapper";
 
-export function  FormWrapper (props) {
+export function FormWrapper (props) {
+  const { formPages, breadCrumbItems, onSubmit } = props;
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const [formData, setFormData] = useState({});
+
+  const handleInputChange = (name, value) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    await onSubmit && onSubmit(formData);
+  };
+
+  const nextPage = (e) => {
+    if (currentPage < formPages.length - 1) {
+      e.preventDefault();
+      setCurrentPage(currentPage + 1)
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1)
+    }
+  };
+
+  return (
+    <PageWrapper breadCrumbItems={breadCrumbItems}>
+      <FormNavigation 
+        categories={formPages.map((page) => page.category)}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+      <div className="flex-1 p-6 flex flex-col">
+        <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
+          <FormContent
+            pageData={formPages[currentPage]}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+            <div className="mt-6 flex justify-between">
+              <Button color="default" onClick={prevPage} disabled={currentPage === 0}>
+                Previous
+              </Button>
+              {currentPage === formPages.length - 1 ? (
+                <Button color="default" htmlType="submit">
+                  Submit
+                </Button>
+              ) : (
+                <Button color="default" onClick={nextPage}>
+                  Next
+                </Button>
+              )}
+            </div>
+        </form>
+      </div>
+    </PageWrapper>
+  );
+}
+
+FormWrapper.propTypes = {
+  formPages: PropTypes.array,
+  breadCrumbItems: PropTypes.array,
+  onSubmit: PropTypes.func,
+}
+
+export function  FormContent (props) {
   const { pageData, formData, handleInputChange } = props;
   return (
     <div className="flex justify-center items-start min-h-[60vh]">
@@ -31,7 +102,7 @@ export function  FormWrapper (props) {
   );
 }
 
-FormWrapper.propTypes = {
+FormContent.propTypes = {
   breadCrumbItems: PropTypes.array,
   pageData: {
     category: PropTypes.string,
