@@ -10,7 +10,7 @@ import {
 import { useLogin } from "../../hooks/login";
 import video from "../../assets/video3.mp4";
 
-export default function LogIn () {
+export default function LogIn() {
   const [form] = Form.useForm();
   const { onFinish } = useLogin();
   const { token } = theme.useToken();
