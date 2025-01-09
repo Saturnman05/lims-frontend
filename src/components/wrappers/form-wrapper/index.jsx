@@ -10,6 +10,7 @@ export function FormWrapper (props) {
   const [formData, setFormData] = useState({});
 
   const handleInputChange = (name, value) => {
+    console.log(value);
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -74,10 +75,11 @@ FormWrapper.propTypes = {
 
 export function  FormContent (props) {
   const { pageData, formData, handleInputChange } = props;
+  
   return (
-    <div className="flex justify-center items-start min-h-[60vh]">
+    <div className="flex justify-center items-start min-h-[55vh]">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4">{pageData.category}</h2>
+        {/* <h2 className="text-2xl font-bold mb-4">{pageData.category}</h2>*/}
         {pageData.fields.map((field) => (
           <div key={field.name} className="mb-4">
             <label htmlFor={field.name} className="block mb-2">{field.label}</label>
@@ -89,7 +91,7 @@ export function  FormContent (props) {
               />
             )}
 
-            {(field.type === "input" || field.type === "text" || field.type === "email") && (
+            {(field.type !== "checkbox" && field.type !== "select") && (
               <Input 
                 type={field.type}
                 id={field.name}
@@ -99,7 +101,7 @@ export function  FormContent (props) {
             )}
 
             {field.type === "select" && (
-              <Select defaultValue={field.name} options={field.options} className="w-full" />
+              <Select defaultValue={field.name} options={field.options} className="w-full" onChange={(e) => handleInputChange(field.name, e)} />
             )}
           </div>
         ))}

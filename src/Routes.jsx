@@ -8,6 +8,7 @@ import ManagementLabManager from "./app/lab-manager/management";
 import SupportLabManager from "./app/lab-manager/support";
 import LogIn from "./app/login/index.jsx";
 import NotFoundPage from "./app/not-found/index.jsx";
+import RegisterMaster from "./app/lab-manager/management/users/register-master/index.jsx";
 
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
@@ -21,7 +22,18 @@ export const Routes = [
       { path: "results-audit", element: <ResultsAuditLabManager /> },
       { path: "informs", element: <InformsLabManager /> },
       { path: "statistics", element: <StatisticsLabManager /> },
-      { path: "management", element: <ManagementLabManager /> },
+      { 
+        path: "management", 
+        children: [
+          { path: "", element: <ManagementLabManager /> },
+          {
+            path: "users",
+            children: [
+              { path: "register-master", element: <RegisterMaster /> },
+            ]
+          }
+        ] 
+      },
       { path: "support", element: <SupportLabManager /> },
     ],
   },
