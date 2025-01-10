@@ -2,11 +2,15 @@ import { API_URL } from "../../utils/constats"
 import users from "./mock-users.json";
 
 export async function logIn (user) {
-  const response = await fetch(`${API_URL}/Auth/login`, {
+  const response = await fetch(`${API_URL}token/`, {
     method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(user),
   });
-  const token = response.data.data.jwt;
+  const data = await response.json();
+  const token = data.access;
   localStorage.setItem("jwt", token);
 }
 

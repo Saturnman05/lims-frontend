@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { mockLogIn } from "../api/login";
+import { logIn } from "../api/login";
 
 export function useLogin() {
   const imgStyle = {
@@ -24,7 +24,7 @@ export function useLogin() {
   const onFinish = async (values) => {
     console.log("en el onfinish:", values);
     try {
-      await mockLogIn(values);
+      await logIn(values);
       navigate("/layout-lab-manager/management/users/register");
     } catch (error) {
       console.error(error);
