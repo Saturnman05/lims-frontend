@@ -41,20 +41,8 @@ export default function LogIn() {
         containerStyle={{
           backgroundColor: 'rgba(230, 230, 230, 0.65)',
           backdropFilter: 'blur(4px)',
-          marginRight: "5rem",
         }}
         subTitle="Integridad y seguridad alimentaria, garantizadas"
-        actions={
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column',
-            }}
-          >
-          </div>
-        }
         onFinish={onFinish}
         form={form}
       >
