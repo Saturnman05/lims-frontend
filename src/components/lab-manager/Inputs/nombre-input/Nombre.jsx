@@ -28,7 +28,7 @@ export default function NombreInput(props) {
               message: `Escribe tu ${name}!`,
             },
           ]}>
-          <Input placeholder={children} allowClear />
+          <Input placeholder={children} allowClear variant="filled" />
         </Form.Item>
       </Form>
     </ConfigProvider>

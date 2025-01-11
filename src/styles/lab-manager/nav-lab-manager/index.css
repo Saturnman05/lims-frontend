@@ -41,7 +41,7 @@ a {
 }
 
 a:hover {
-  color: #200e32;
+  color: #003d3a;
   transition-duration: 150ms;
 }
 
@@ -51,4 +51,118 @@ a:hover {
 
 .custom-avatar .anticon {
   color: #0c1827;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  width: 300px;
+  max-width: calc(100vw - 1rem);
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  overflow: hidden;
+  margin: 0 8px;
+
+  transition: height var(--speed) ease;
+}
+
+.dropdown-container,
+.avatar-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.avatar-container {
+  position: relative;
+}
+
+.avatar-container .dropdown,
+.dropdown-container .dropdown {
+  right: 0; /* Esto ayuda a alinear con el borde derecho del avatar */
+  margin-right: 0; /* Reduce el margen derecho */
+}
+
+.dropdown-container button:hover {
+  color: #003d3a;
+}
+
+.menu-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
+}
+
+.menu-item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-item:hover {
+  background-color: #078c85;
+}
+
+.icon-right {
+  margin-left: auto;
+}
+
+.menu-primary-enter {
+  position: absolute;
+  transform: translateY(-110%);
+}
+
+.menu-primary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+
+.menu-primary-exit {
+  position: absolute;
+}
+
+.menu-primary-exit-active {
+  transform: translateY(-110px);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-enter {
+  transform: translateX(110%);
+}
+
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-exit {
+  position: absolute;
+}
+
+.menu-secondary-exit-active {
+  transform: translateY(-110px);
+  transition: all var(--speed) ease;
+}
+
+/* Estilo para menús terciarios */
+.menu-tertiary-enter {
+  transform: translateX(-110%);
+}
+
+.menu-tertiary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+
+.menu-tertiary-exit {
+  position: absolute;
+}
+
+.menu-tertiary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
 }
