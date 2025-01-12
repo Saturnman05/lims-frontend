@@ -30,7 +30,7 @@ const formPages = [
   },
 ];
 
-export default function ExternalRegisterLabManager() {
+export default function InternalRegisterLabManager() {
   return (
     <FormWrapper
       formPages={formPages}
@@ -43,7 +43,7 @@ export default function ExternalRegisterLabManager() {
         },
         {
           title: (
-            <Link to="/layout-lab-manager/management/user-management-external">
+            <Link to="/layout-lab-manager/management/user-management-internal/">
               Gestion de Usuarios Internos
             </Link>
           ),

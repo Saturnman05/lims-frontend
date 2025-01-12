@@ -75,7 +75,10 @@ export function NavLabManager() {
 
   const userManagementExternalItems = [
     { to: "#", label: "Gestión" },
-    { to: "#", label: "Registrar Usuario" },
+    {
+      to: "/layout-lab-manager/management/user-management-external/register",
+      label: "Registrar Usuario",
+    },
   ];
 
   const AvatarItems = [
