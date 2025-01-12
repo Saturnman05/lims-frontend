@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 import { FormWrapper } from "../../../../../../components/wrappers/form-wrapper/index.jsx";
+import { postExternalUser } from "../../../../../../api/users/index.js";
+import { message } from "antd";
 
 const formPages = [
   {
@@ -44,9 +46,37 @@ const formPages = [
 ];
 
 export default function ExternalRegisterLabManager() {
+  const onSubmit = async (user) => {
+    if (user.password !== user.confirmPassword) {
+      message.error("Las contraseñas deben ser iguales");
+      return;
+    }
+
+    console.log("usuario a crear", user);
+
+    try {
+      const response = await postExternalUser({
+        cedula: user.cedula,
+        comercialName: user.comercialName,
+        companyName: user.companyName,
+        email: user.email,
+        fullName: user.name + " " + user.lastName,
+        isMaster: user.rol === "Master",
+        password: user.password,
+        phone: user.phone,
+        rnc: user.rnc,
+        username: user.username,
+      });
+      console.log(response);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <FormWrapper
       formPages={formPages}
+      onSubmit={onSubmit}
       breadCrumbItems={[
         {
           title: (
