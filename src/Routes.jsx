@@ -25,6 +25,7 @@ export const Routes = [
       { path: "results-audit", element: <ResultsAuditLabManager /> },
       { path: "informs", element: <InformsLabManager /> },
       { path: "statistics", element: <StatisticsLabManager /> },
+      { path: "management/user-management-external/register", element: <ExternalRegisterLabManager /> },
       {
         path: "management",
         element: <ManagementLabManager />,
@@ -32,12 +33,6 @@ export const Routes = [
           {
             path: "user-management-external",
             element: <UserManagementExternalLabManager />,
-            children: [
-              {
-                path: "register",
-                element: <ExternalRegisterLabManager />,
-              },
-            ],
           },
           {
             path: "user-management-internal",
