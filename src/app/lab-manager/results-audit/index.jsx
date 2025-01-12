@@ -7,9 +7,8 @@ export default function ResultsAuditLabManager() {
     <PageWrapper
       breadCrumbItems={[
         { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
-        { title: <Link>Resultados y Auditoría</Link> },
-      ]}
-    >
+        { title: "Resultados y Auditoría" },
+      ]}>
       <></>
     </PageWrapper>
   );

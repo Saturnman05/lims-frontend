@@ -3,20 +3,20 @@ import { logIn } from "../api/login";
 
 export function useLogin() {
   const imgStyle = {
-    display: 'block',
+    display: "block",
     width: 200,
   };
-  
+
   const rowStyle = {
-    display: "flex", 
-    justifyContent: "center", 
-    minHeight: "100vh"
+    display: "flex",
+    justifyContent: "center",
+    minHeight: "100vh",
   };
-  
+
   const centerStyle = {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   };
 
   const navigate = useNavigate();
@@ -31,5 +31,5 @@ export function useLogin() {
     }
   };
 
-  return { navigate, onFinish, imgStyle, rowStyle, centerStyle }
+  return { navigate, onFinish, imgStyle, rowStyle, centerStyle };
 }
