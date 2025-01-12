@@ -1,30 +1,43 @@
-import { FormWrapper } from "../../../../../../components/wrappers/form-wrapper/index.jsx";
 import { Link } from "react-router";
+import { FormWrapper } from "../../../../../../components/wrappers/form-wrapper/index.jsx";
 
 const formPages = [
   {
-    category: "Personal Information",
+    category: "Datos Personales",
     fields: [
-      { name: "name", label: "Full Name", type: "text" },
-      { name: "email", label: "Email", type: "email" },
+      { name: "name", label: "Nombre", type: "text" },
+      { name: "lastName", label: "Apellido", type: "text" },
+      { name: "cedula", label: "Cédula", type: "text" },
+      { name: "email", label: "Correo Institucional", type: "email" },
+      { name: "phone", label: "Teléfono", type: "text" },
     ],
   },
   {
-    category: "Address",
+    category: "Datos de la Empresa",
     fields: [
-      { name: "street", label: "Street Address", type: "text" },
-      { name: "city", label: "City", type: "text" },
-      { name: "zipCode", label: "Zip Code", type: "text" },
-    ],
-  },
-  {
-    category: "Preferences",
-    fields: [
-      { name: "favoriteColor", label: "Favorite Color", type: "text" },
       {
-        name: "newsletter",
-        label: "Subscribe to Newsletter",
-        type: "checkbox",
+        name: "rol",
+        label: "Rol",
+        type: "select",
+        options: [
+          { value: "Empleado", label: "Empleado" },
+          { value: "Master", label: "Master" },
+        ],
+      },
+      { name: "companyName", label: "Nombre de la Compañía", type: "text" },
+      { name: "comercialName", label: "Nombre Comercial", type: "text" },
+      { name: "rnc", label: "RNC", type: "text" },
+    ],
+  },
+  {
+    category: "Datos del Usuario",
+    fields: [
+      { name: "username", label: "Nombre de Usuario", type: "text" },
+      { name: "password", label: "Contraseña", type: "password" },
+      {
+        name: "confirmPassword",
+        label: "Confirmar Contraseña",
+        type: "password",
       },
     ],
   },
@@ -35,20 +48,19 @@ export default function ExternalRegisterLabManager() {
     <FormWrapper
       formPages={formPages}
       breadCrumbItems={[
-        { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
         {
           title: (
-            <Link to="/layout-lab-manager/management">Administración</Link>
+            <Link to="/layout-lab-manager/management">Administracion</Link>
           ),
         },
         {
           title: (
             <Link to="/layout-lab-manager/management/user-management-external">
-              Gestion de Usuarios Internos
+              Gestion de Usuarios Externos
             </Link>
           ),
         },
-        { title: "Register" },
+        { title: "Registrar Usuario" },
       ]}
     />
   );
