@@ -17,7 +17,10 @@ export function FormWrapper (props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    await onSubmit && onSubmit(formData);
+
+    if (onSubmit) {
+      await onSubmit(formData);
+    }
   };
 
   const nextPage = (e) => {
