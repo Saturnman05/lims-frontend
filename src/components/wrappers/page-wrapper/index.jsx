@@ -1,20 +1,19 @@
 import PropTypes from "prop-types";
 import { ConfigProvider, Breadcrumb } from "antd";
+import "../../../styles/wrappers/page-wrapper/index.css";
 
-export function PageWrapper (props) {
+export function PageWrapper(props) {
   const { breadCrumbItems, children } = props;
   return (
     <ConfigProvider
       theme={{
         components: { Breadcrumb: { separatorColor: "rgba(22, 217, 206)" } },
       }}>
-      <div className="flex flex-col w-full">
+      <div className="page-wrapper">
         <div>
           <Breadcrumb items={breadCrumbItems} />
         </div>
-        <div className="flex">
-          {children}
-        </div>
+        <div className="page-wrapper-children">{children}</div>
       </div>
     </ConfigProvider>
   );
@@ -23,4 +22,4 @@ export function PageWrapper (props) {
 PageWrapper.propTypes = {
   breadCrumbItems: PropTypes.array,
   children: PropTypes.node.isRequired,
-}
+};
