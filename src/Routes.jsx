@@ -25,27 +25,11 @@ export const Routes = [
       { path: "results-audit", element: <ResultsAuditLabManager /> },
       { path: "informs", element: <InformsLabManager /> },
       { path: "statistics", element: <StatisticsLabManager /> },
+      { path: "management", element: <ManagementLabManager /> },
       { path: "management/user-management-external/register", element: <ExternalRegisterLabManager /> },
-      {
-        path: "management",
-        element: <ManagementLabManager />,
-        children: [
-          {
-            path: "user-management-external",
-            element: <UserManagementExternalLabManager />,
-          },
-          {
-            path: "user-management-internal",
-            element: <UserManagementInternalLabManager />,
-            children: [
-              {
-                path: "register",
-                element: <InternalRegisterLabManager />,
-              },
-            ],
-          },
-        ],
-      },
+      { path: "management/user-management-external", element: <UserManagementExternalLabManager /> },
+      { path: "management/user-management-internal", element: <UserManagementInternalLabManager /> },
+      { path: "management/user-management-internal/register", element: <InternalRegisterLabManager /> },
       { path: "support", element: <SupportLabManager /> },
     ],
   },
