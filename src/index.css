@@ -8,3 +8,22 @@
 .inter-font {
   font-family: "Inter";
 }
+
+:root {
+  --bg: #0cb2aa;
+  --bg-accent: #dce7f5;
+  --border: 1px solid #abf5f1;
+  --border-radius: 8px;
+  --speed: 0.5s;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}

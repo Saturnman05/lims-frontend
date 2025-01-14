@@ -6,9 +6,8 @@ export default function StatisticsLabManager() {
     <PageWrapper
       breadCrumbItems={[
         { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
-        { title: <Link>Estadísticas</Link> },
-      ]}
-    >
+        { title: "Estadísticas" },
+      ]}>
       <></>
     </PageWrapper>
   );

@@ -6,9 +6,8 @@ export default function InformsLabManager() {
     <PageWrapper
       breadCrumbItems={[
         { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
-        { title: <Link>Informes</Link> },
-      ]}
-    >
+        { title: "Informes" },
+      ]}>
       <></>
     </PageWrapper>
   );

@@ -6,9 +6,8 @@ export default function SupportLabManager() {
     <PageWrapper
       breadCrumbItems={[
         { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
-        { title: <Link>Soporte</Link> },
-      ]}
-    >
+        { title: "Soporte" },
+      ]}>
       <></>
     </PageWrapper>
   );

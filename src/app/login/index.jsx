@@ -1,15 +1,9 @@
-import { Form, theme } from 'antd';
-import {
-  LockOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import {
-  LoginFormPage,
-  ProFormText,
-} from '@ant-design/pro-components';
+import { Form, theme } from "antd";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { LoginFormPage, ProFormText } from "@ant-design/pro-components";
 import { useLogin } from "../../hooks/login";
 import video from "../../assets/video3.mp4";
-
+import "../../styles/global.css";
 export default function LogIn() {
   const [form] = Form.useForm();
   const { onFinish } = useLogin();
@@ -18,18 +12,17 @@ export default function LogIn() {
   return (
     <div
       style={{
-        backgroundColor: 'white',
-        height: '100vh',
-      }}
-    >
+        backgroundColor: "white",
+        height: "100vh",
+      }}>
       <LoginFormPage
         submitter={{
-          searchConfig: { 
+          searchConfig: {
             submitText: "Iniciar sesión",
-          }, 
-          submitButtonProps: { 
-            style: { 
-              background: "#16D9CE", 
+          },
+          submitButtonProps: {
+            style: {
+              background: "#16D9CE",
               width: "100%",
             },
           },
@@ -39,52 +32,64 @@ export default function LogIn() {
         backgroundVideoUrl={video}
         title="LIMS"
         containerStyle={{
-          backgroundColor: 'rgba(230, 230, 230, 0.65)',
-          backdropFilter: 'blur(4px)',
+          backgroundColor: "rgba(230, 230, 230, 0.65)",
+          backdropFilter: "blur(4px)",
+          marginRight: "7rem",
+          width: "400px", // Add fixed width
+          maxWidth: "90%", // Ensure responsiveness
+          flex: "0 0 auto", // Prevent flex growing
         }}
         subTitle="Integridad y seguridad alimentaria, garantizadas"
+        actions={
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}></div>
+        }
         onFinish={onFinish}
-        form={form}
-      >
+        form={form}>
         <ProFormText
           name="username"
           fieldProps={{
-            size: 'large',
+            size: "large",
             prefix: (
               <UserOutlined
                 style={{
                   color: token.colorText,
                 }}
-                className={'prefixIcon'}
+                className={"prefixIcon"}
               />
             ),
           }}
-          placeholder={'user'}
+          placeholder={"user"}
           rules={[
             {
               required: true,
-              message: 'Escribe tu usuario!',
+              message: "Escribe tu usuario!",
             },
           ]}
         />
         <ProFormText.Password
           name="password"
           fieldProps={{
-            size: 'large',
+            size: "large",
             prefix: (
               <LockOutlined
                 style={{
                   color: token.colorText,
                 }}
-                className={'prefixIcon'}
+                className={"prefixIcon"}
               />
             ),
           }}
-          placeholder={'ant.design'}
+          placeholder={"ant.design"}
           rules={[
             {
               required: true,
-              message: 'Escribe tu contraseña',
+              message: "Escribe tu contraseña",
             },
           ]}
         />
