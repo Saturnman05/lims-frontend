@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { FormWrapper } from "../../../../../../components/wrappers/form-wrapper/index.jsx";
 import { postExternalUser } from "../../../../../../api/users/index.js";
 import { message } from "antd";
+import { useNavigate } from "react-router";
 
 const formPages = [
   {
@@ -46,6 +47,8 @@ const formPages = [
 ];
 
 export default function ExternalRegisterLabManager() {
+  const navigate = useNavigate();
+
   const onSubmit = async (user) => {
     if (user.password !== user.confirmPassword) {
       message.error("Las contraseñas deben ser iguales");
@@ -68,6 +71,7 @@ export default function ExternalRegisterLabManager() {
         username: user.username,
       });
       console.log(response);
+      navigate("/layout-lab-manager/home-lab-manager/")
     } catch (e) {
       console.error(e);
     }

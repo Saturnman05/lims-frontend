@@ -25,7 +25,7 @@ export function useLogin() {
     console.log("en el onfinish:", values);
     try {
       await logIn(values);
-      navigate("/layout-lab-manager/management/user-management-external/register");
+      navigate("/layout-lab-manager/home-lab-manager/");
     } catch (error) {
       console.error(error);
     }
