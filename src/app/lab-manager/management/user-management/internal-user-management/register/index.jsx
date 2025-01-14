@@ -80,7 +80,7 @@ export default function InternalRegisterLabManager() {
             </Link>
           ),
         },
-        { title: "Register" },
+        { title: "Registrar Usuario" },
       ]}
     />
   );

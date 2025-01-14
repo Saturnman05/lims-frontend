@@ -78,14 +78,15 @@ export default function ExternalRegisterLabManager() {
       formPages={formPages}
       onSubmit={onSubmit}
       breadCrumbItems={[
+        { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
         {
           title: (
-            <Link to="/layout-lab-manager/management">Administracion</Link>
+            <Link to="/layout-lab-manager/management">Administración</Link>
           ),
         },
         {
           title: (
-            <Link to="/layout-lab-manager/management/user-management-external">
+            <Link to="/layout-lab-manager/management/user-management-internal/">
               Gestion de Usuarios Externos
             </Link>
           ),
