@@ -55,7 +55,7 @@ export default function InternalRegisterLabManager() {
         phone: user.phone,
         username: user.username,
       });
-
+      console.log(response);
       // Si no hay error, puedes agregar lógica adicional aquí si es necesario
     } catch (e) {
       console.error(e);
