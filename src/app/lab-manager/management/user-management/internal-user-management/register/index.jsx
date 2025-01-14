@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FormWrapper } from "../../../../../../components/wrappers/form-wrapper/index.jsx";
 import { postInternalUser } from "../../../../../../api/users/index.js"; // Importa la función
 import { message } from "antd";
@@ -38,6 +38,8 @@ const formPages = [
 ];
 
 export default function InternalRegisterLabManager() {
+  const navigate = useNavigate();
+
   const onSubmit = async (user) => {
     if (user.password !== user.confirmPassword) {
       message.error("Las contraseñas deben ser iguales");
@@ -57,6 +59,7 @@ export default function InternalRegisterLabManager() {
       });
       console.log(response);
       // Si no hay error, puedes agregar lógica adicional aquí si es necesario
+      navigate("/layout-lab-manager/home-lab-manager/");
     } catch (e) {
       console.error(e);
     }
