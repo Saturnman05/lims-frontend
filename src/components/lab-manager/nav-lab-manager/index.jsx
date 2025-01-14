@@ -69,14 +69,28 @@ export function NavLabManager() {
       to: "#",
       label: "Internos",
       rightIcon: <CaretRightOutlined />,
+      goToMenu: "userManagementInternal",
     },
-    { to: "#", label: "Externos", goToMenu: "userManagementExternal" },
+    {
+      to: "#",
+      label: "Externos",
+      goToMenu: "userManagementExternal",
+      rightIcon: <CaretRightOutlined />,
+    },
   ];
 
   const userManagementExternalItems = [
     { to: "#", label: "Gestión" },
     {
       to: "/layout-lab-manager/management/user-management-external/register",
+      label: "Registrar Usuario",
+    },
+  ];
+
+  const userManagementInternalItems = [
+    { to: "#", label: "Gestión" },
+    {
+      to: "/layout-lab-manager/management/user-management-internal/register",
       label: "Registrar Usuario",
     },
   ];
@@ -127,6 +141,7 @@ export function NavLabManager() {
               submenus={{
                 userManagement: userManagementItems,
                 userManagementExternal: userManagementExternalItems,
+                userManagementInternal: userManagementInternalItems,
               }}
               position={adminPosition}
             />
