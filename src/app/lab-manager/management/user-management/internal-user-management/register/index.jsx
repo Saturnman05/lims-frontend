@@ -3,28 +3,33 @@ import { Link } from "react-router";
 
 const formPages = [
   {
-    category: "Personal Information",
+    category: "Datos Personales",
     fields: [
-      { name: "name", label: "Full Name", type: "text" },
-      { name: "email", label: "Email", type: "email" },
+      { name: "name", label: "Nombre", type: "text" },
+      { name: "lastName", label: "Apellido", type: "text" },
+      { name: "cedula", label: "Cédula", type: "text" },
+      { name: "email", label: "Correo Institucional", type: "email" },
+      { name: "phone", label: "Teléfono", type: "text" },
     ],
   },
   {
-    category: "Address",
+    category: "Datos del Usuario",
     fields: [
-      { name: "street", label: "Street Address", type: "text" },
-      { name: "city", label: "City", type: "text" },
-      { name: "zipCode", label: "Zip Code", type: "text" },
-    ],
-  },
-  {
-    category: "Preferences",
-    fields: [
-      { name: "favoriteColor", label: "Favorite Color", type: "text" },
+      { name: "username", label: "Nombre de Usuario", type: "text" },
       {
-        name: "newsletter",
-        label: "Subscribe to Newsletter",
-        type: "checkbox",
+        name: "rol",
+        label: "Rol",
+        type: "select",
+        options: [
+          { value: "Empleado", label: "Empleado" },
+          { value: "Master", label: "Master" },
+        ],
+      },
+      { name: "password", label: "Contraseña", type: "password" },
+      {
+        name: "confirmPassword",
+        label: "Confirmar Contraseña",
+        type: "password",
       },
     ],
   },
