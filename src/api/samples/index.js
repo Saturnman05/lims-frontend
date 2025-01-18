@@ -29,3 +29,25 @@ export async function getSubCategorysOptions() {
   return subcategorys;
 }
 
+export async function postSample(sample) {
+  const token = localStorage.getItem("jwt");
+  const response = await fetch(`${API_URL}samples/`, {
+    method: "post",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify(sample),
+  });
+
+  if (response.ok) {
+    message.success("Se mandó la solicitud correctamente");
+    const data = await response.json();
+    return data;
+  }
+
+  const error = await response.json();
+  message.error("Error al solicitar la muestra.");
+
+  return error;
+}
