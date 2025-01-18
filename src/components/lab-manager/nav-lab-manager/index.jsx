@@ -9,12 +9,15 @@ import {
 import "../../../styles/lab-manager/nav-lab-manager/index.css";
 import { Avatar } from "antd";
 import { CSSTransition } from "react-transition-group";
+import { useLogout } from "../../../hooks/logout";
 
 export function NavLabManager() {
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isAvatarOpen, setIsAvatarOpen] = useState(false);
   const [adminPosition, setAdminPosition] = useState({ x: 0 });
   const [avatarPosition, setAvatarPosition] = useState({ x: 0 });
+
+  const { logout } = useLogout();
 
   const adminDropdownRef = useRef(null);
   const avatarDropdownRef = useRef(null);
@@ -97,6 +100,11 @@ export function NavLabManager() {
 
   const AvatarItems = [
     {
+      to: "",
+      label: "Cerrar sesión",
+      func: logout,
+    },
+    {
       to: "#",
       label: "Ajustes de Laboratorio",
       rightIcon: <CaretRightOutlined />,
@@ -172,11 +180,12 @@ const DropdownMenu = React.forwardRef(
   ({ items, submenus, subsubmenus, position }, ref) => {
     const [activeMenu, setActiveMenu] = useState("main");
 
-    function DropdownItem({ to, children, rightIcon, leftIcon, goToMenu }) {
+    function DropdownItem({ to, children, rightIcon, leftIcon, goToMenu, onClick }) {
       return (
         <li
           className="menu-item"
-          onClick={() => goToMenu && setActiveMenu(goToMenu)}>
+          onClick={() => {goToMenu && setActiveMenu(goToMenu); onClick && onClick()}}
+        >
           <CustomLink to={to}>
             {leftIcon && <span className="icon-left">{leftIcon}</span>}
             {children}
@@ -192,6 +201,7 @@ const DropdownMenu = React.forwardRef(
       rightIcon: PropTypes.node,
       leftIcon: PropTypes.node,
       goToMenu: PropTypes.string,
+      onClick: PropTypes.func,
     };
 
     const dropdownStyle = {
@@ -205,7 +215,8 @@ const DropdownMenu = React.forwardRef(
           in={activeMenu === "main"}
           timeout={500}
           classNames="menu-primary"
-          unmountOnExit>
+          unmountOnExit
+        >
           <div className="menu">
             {items.map((item, index) => (
               <DropdownItem
@@ -213,7 +224,9 @@ const DropdownMenu = React.forwardRef(
                 to={item.to}
                 rightIcon={item.rightIcon}
                 leftIcon={item.leftIcon}
-                goToMenu={item.goToMenu}>
+                goToMenu={item.goToMenu}
+                onClick={item.func}
+              >
                 {item.label}
               </DropdownItem>
             ))}
@@ -280,6 +293,7 @@ DropdownMenu.propTypes = {
       label: PropTypes.node.isRequired,
       rightIcon: PropTypes.node,
       goToMenu: PropTypes.string,
+      func: PropTypes.func,
     })
   ).isRequired,
   submenus: PropTypes.objectOf(
@@ -314,7 +328,8 @@ function CustomLink({ to, children, ...props }) {
     <Link
       to={to}
       className={location.pathname === to ? "active" : ""}
-      {...props}>
+      {...props}
+    >
       {children}
     </Link>
   );

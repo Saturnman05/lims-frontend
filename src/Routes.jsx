@@ -12,6 +12,8 @@ import UserManagementExternalLabManager from "./app/lab-manager/management/user-
 import UserManagementInternalLabManager from "./app/lab-manager/management/user-management/internal-user-management/index.jsx";
 import ExternalRegisterLabManager from "./app/lab-manager/management/user-management/external-user-management/register/index.jsx";
 import InternalRegisterLabManager from "./app/lab-manager/management/user-management/internal-user-management/register/index.jsx";
+import RequestSample from "./app/lab-manager/samples/request-sample/index.jsx";
+import SampleFiles from "./app/lab-manager/samples/request-sample/files.jsx";
 
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
@@ -22,6 +24,8 @@ export const Routes = [
     children: [
       { path: "home-lab-manager", element: <HomeLabManager /> },
       { path: "samples", element: <SampleLabManager /> },
+      { path: "samples/request", element: <RequestSample />},
+      { path: "samples/request/files", element: <SampleFiles /> },
       { path: "results-audit", element: <ResultsAuditLabManager /> },
       { path: "informs", element: <InformsLabManager /> },
       { path: "statistics", element: <StatisticsLabManager /> },

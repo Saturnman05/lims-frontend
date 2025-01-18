@@ -86,9 +86,7 @@ export function FormContent({ pageData, formData, handleInputChange }) {
             />
           );
       }
-    },
-    [formData, handleInputChange]
-  );
+    }, [formData, handleInputChange]);
 
   return (
     <div className="flex justify-center items-start h-full items-center">

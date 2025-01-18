@@ -22,7 +22,6 @@ export function useLogin() {
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
-    console.log("en el onfinish:", values);
     try {
       await logIn(values);
       navigate("/layout-lab-manager/home-lab-manager/");
