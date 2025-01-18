@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { FormWrapper } from "../../../../components/wrappers/form-wrapper/index.jsx";
-import { getCategorysOptions, getSubCategorysOptions, getAllergensOptions } from "../../../../api/samples/index.js" 
+import { getCategorysOptions, getSubCategorysOptions } from "../../../../api/samples/index.js" 
 import { useState, useEffect } from "react";
 
 export default function RequestSample() {
@@ -35,7 +35,6 @@ export default function RequestSample() {
       fields: [
         { name: "specialConditions", label: "Condiciones especiales", type: "text" },
         { name: "temperature", label: "Temperatura (°C)", type: "number" },
-        { name: "allergens", label: "Alérgenos", type: "select", options: options.allergens },
       ],
     },
   ];
@@ -58,15 +57,6 @@ export default function RequestSample() {
       }));
     }
     loadSubCategorys();
-
-    const loadAllergens = async () => {
-      const allergens = await getAllergensOptions();
-      setOptions((prev) => ({
-        ...prev,
-        allergens: allergens,
-      }));
-    }
-    loadAllergens();
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 import { API_URL } from "../../utils/constats";
+import { message } from "antd";
 
 export async function getCategorysOptions() {
   const token = localStorage.getItem("jwt");
@@ -10,21 +11,13 @@ export async function getCategorysOptions() {
     },
   });
   const data = await response.json();
-  const categorys = data.map(category => ({value: category.category_name, label: category.category_name}));
+  const categorys = data.map(category => ({value: category.category_id, label: category.category_value}));
   return categorys;
 }
 
 export async function getSubCategorysOptions() {
-  return [
-    { value: "uno", label: "uno" },
-    { value: "dos", label: "dos" },
-    { value: "tres", label: "tres" },
-  ]
-}
-
-export async function getAllergensOptions() {
   const token = localStorage.getItem("jwt");
-  const response = await fetch(`${API_URL}allergens/`, {
+  const response = await fetch(`${API_URL}subcategorys/`, {
     method: "get",
     headers: {
         "Content-Type": "application/json",
@@ -32,6 +25,7 @@ export async function getAllergensOptions() {
     },
   });
   const data = await response.json();
-  const allergens = data.map(allergen => ({value: allergen.allergen_name, label: allergen.allergen_name}));
-  return allergens;
+  const subcategorys = data.map(subcategory => ({value: subcategory.subcategory_id, label: subcategory.subcategory_name}));
+  return subcategorys;
 }
+
