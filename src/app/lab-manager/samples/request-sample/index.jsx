@@ -1,7 +1,8 @@
 import { Link } from "react-router";
 import { FormWrapper } from "../../../../components/wrappers/form-wrapper/index.jsx";
-import { getCategorysOptions, getSubCategorysOptions } from "../../../../api/samples/index.js" 
+import { getCategorysOptions, getSubCategorysOptions, postSample } from "../../../../api/samples/index.js";
 import { useState, useEffect } from "react";
+import { message } from "antd";
 
 export default function RequestSample() {
   const [options, setOptions] = useState({
@@ -9,6 +10,8 @@ export default function RequestSample() {
     subCategorys: [],
     allergens: [],
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formPages = [
     {
@@ -74,37 +77,58 @@ export default function RequestSample() {
   ];
 
   useEffect(() => {
-    const loadCategorys = async () => {
-      const categorys = await getCategorysOptions();
-      setOptions((prev) => ({
-        ...prev,
-        categorys: categorys,
-      }));
-    }
-    loadCategorys();
+    const loadOptions = async () => {
+      try {
+        const [categorys, subCategorys] = await Promise.all([
+          getCategorysOptions(),
+          getSubCategorysOptions()
+        ]);
+        
+        setOptions((prev) => ({
+          ...prev,
+          categorys,
+          subCategorys,
+        }));
+      } catch (error) {
+        message.error("Error al cargar las opciones del formulario");
+        console.error("Error loading options:", error);
+      }
+    };
 
-    const loadSubCategorys = async () => {
-      const subCategorys = await getSubCategorysOptions();
-      setOptions((prev) => ({
-        ...prev,
-        subCategorys: subCategorys,
-      }));
-    }
-    loadSubCategorys();
+    loadOptions();
   }, []);
+
+  const handleSubmit = async (formData) => {
+    try {
+      setIsSubmitting(true);
+      const response = await postSample(formData);
+      
+      if (response.error) {
+        throw new Error(response.error);
+      }
+      
+      // Aquí puedes agregar redirección después del éxito si lo deseas
+      // navigate("/layout-lab-manager/samples");
+      
+    } catch (error) {
+      console.error("Error submitting sample:", error);
+      message.error("Error al enviar la muestra: " + error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <FormWrapper
       formPages={formPages}
+      onFinish={handleSubmit}
+      isSubmitting={isSubmitting}
       breadCrumbItems={[
         { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
-        {
-          title: (
-            <Link to="/layout-lab-manager/samples">Muestras</Link>
-          ),
-        },
+        { title: <Link to="/layout-lab-manager/samples">Muestras</Link> },
         { title: "Solicitud de muestra" },
       ]}
     />
   );
 }
+
