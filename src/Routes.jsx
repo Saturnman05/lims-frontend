@@ -8,7 +8,12 @@ import ManagementLabManager from "./app/lab-manager/management";
 import SupportLabManager from "./app/lab-manager/support";
 import LogIn from "./app/login/index.jsx";
 import NotFoundPage from "./app/not-found/index.jsx";
-import RegisterUser from "./app/lab-manager/management/users/register-master/index.jsx";
+import UserManagementExternalLabManager from "./app/lab-manager/management/user-management/external-user-management/index.jsx";
+import UserManagementInternalLabManager from "./app/lab-manager/management/user-management/internal-user-management/index.jsx";
+import ExternalRegisterLabManager from "./app/lab-manager/management/user-management/external-user-management/register/index.jsx";
+import InternalRegisterLabManager from "./app/lab-manager/management/user-management/internal-user-management/register/index.jsx";
+import RequestSample from "./app/lab-manager/samples/request-sample/index.jsx";
+import SampleFiles from "./app/lab-manager/samples/request-sample/files.jsx";
 
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
@@ -19,21 +24,16 @@ export const Routes = [
     children: [
       { path: "home-lab-manager", element: <HomeLabManager /> },
       { path: "samples", element: <SampleLabManager /> },
+      { path: "samples/request", element: <RequestSample />},
+      { path: "samples/request/files", element: <SampleFiles /> },
       { path: "results-audit", element: <ResultsAuditLabManager /> },
       { path: "informs", element: <InformsLabManager /> },
       { path: "statistics", element: <StatisticsLabManager /> },
-      { 
-        path: "management", 
-        children: [
-          { path: "", element: <ManagementLabManager /> },
-          {
-            path: "users",
-            children: [
-              { path: "register", element: <RegisterUser /> },
-            ]
-          }
-        ] 
-      },
+      { path: "management", element: <ManagementLabManager /> },
+      { path: "management/user-management-external/register", element: <ExternalRegisterLabManager /> },
+      { path: "management/user-management-external", element: <UserManagementExternalLabManager /> },
+      { path: "management/user-management-internal", element: <UserManagementInternalLabManager /> },
+      { path: "management/user-management-internal/register", element: <InternalRegisterLabManager /> },
       { path: "support", element: <SupportLabManager /> },
     ],
   },
