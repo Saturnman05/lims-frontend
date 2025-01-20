@@ -101,7 +101,31 @@ export default function RequestSample() {
   const handleSubmit = async (formData) => {
     try {
       setIsSubmitting(true);
-      const response = await postSample(formData);
+
+      // Obtener userId del localStorage o de donde esté almacenado
+      const userId = localStorage.getItem("userId");
+
+      // Transformar los datos al formato requerido
+      const transformedData = {
+        ...formData,
+        userId: userId,
+        categorys: [
+          {
+            categoryId: formData.category
+          }
+        ],
+        subCategorys: [
+          {
+            subcategoryId: formData.subCategory
+          }
+        ]
+      };
+
+      // Eliminar las propiedades originales ya que ahora están en el nuevo formato
+      delete transformedData.category;
+      delete transformedData.subCategory;
+
+      const response = await postSample(transformedData);
       
       if (response.error) {
         throw new Error(response.error);
@@ -121,7 +145,7 @@ export default function RequestSample() {
   return (
     <FormWrapper
       formPages={formPages}
-      onFinish={handleSubmit}
+      onSubmit={handleSubmit}
       isSubmitting={isSubmitting}
       breadCrumbItems={[
         { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
@@ -131,4 +155,3 @@ export default function RequestSample() {
     />
   );
 }
-
