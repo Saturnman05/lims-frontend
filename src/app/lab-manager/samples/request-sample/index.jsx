@@ -137,38 +137,29 @@ export default function RequestSample() {
   }, []);
 
   const handleSubmit = async (formData) => {
-    console.log("jlkjl;kj");
     try {
       setIsSubmitting(true);
-
-      // Obtener userId del localStorage o de donde esté almacenado
-      const userId = localStorage.getItem("userId");
 
       // Transformar los datos al formato requerido
       const transformedData = {
         ...formData,
-        userId: userId,
+        userId: 1,
         categorys: [
-          {
-            categoryId: formData.category
-          }
+          {categoryId: formData.category}
         ],
-        subCategorys: [
-          {
-            subcategoryId: formData.subCategory
-          }
-        ]
+        subcategorys: [
+          {subcategoryId: formData.subCategory}
+        ],
       };
 
       // Eliminar las propiedades originales ya que ahora están en el nuevo formato
       delete transformedData.category;
       delete transformedData.subCategory;
 
+      console.log("transformed data:", transformedData);
       const response = await postSample(transformedData);
       
-      if (response.error) {
-        throw new Error(response.error);
-      }
+      console.log(response);
       
       // Aquí puedes agregar redirección después del éxito si lo deseas
       // navigate("/layout-lab-manager/samples");
