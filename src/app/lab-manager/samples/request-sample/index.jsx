@@ -102,19 +102,16 @@ export default function RequestSample() {
     try {
       setIsSubmitting(true);
 
-      // Obtener userId del localStorage o de donde esté almacenado
-      const userId = localStorage.getItem("userId");
-
       // Transformar los datos al formato requerido
       const transformedData = {
         ...formData,
-        userId: userId,
+        userId: 1,
         categorys: [
           {
             categoryId: formData.category
           }
         ],
-        subCategorys: [
+        subcategorys: [
           {
             subcategoryId: formData.subCategory
           }
