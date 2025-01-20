@@ -140,7 +140,31 @@ export default function RequestSample() {
     console.log("jlkjl;kj");
     try {
       setIsSubmitting(true);
-      const response = await postSample(formData);
+
+      // Obtener userId del localStorage o de donde esté almacenado
+      const userId = localStorage.getItem("userId");
+
+      // Transformar los datos al formato requerido
+      const transformedData = {
+        ...formData,
+        userId: userId,
+        categorys: [
+          {
+            categoryId: formData.category
+          }
+        ],
+        subCategorys: [
+          {
+            subcategoryId: formData.subCategory
+          }
+        ]
+      };
+
+      // Eliminar las propiedades originales ya que ahora están en el nuevo formato
+      delete transformedData.category;
+      delete transformedData.subCategory;
+
+      const response = await postSample(transformedData);
       
       if (response.error) {
         throw new Error(response.error);
@@ -170,4 +194,3 @@ export default function RequestSample() {
     />
   );
 }
-
