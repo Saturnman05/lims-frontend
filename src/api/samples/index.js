@@ -11,7 +11,7 @@ export async function getCategorysOptions() {
     },
   });
   const data = await response.json();
-  const categorys = data.map(category => ({value: category.category_id, label: category.category_value}));
+  const categorys = data.map(category => ({value: category.category_id, label: category.category_name}));
   return categorys;
 }
 
@@ -30,7 +30,6 @@ export async function getSubCategorysOptions() {
 }
 
 export async function postSample(sample) {
-  console.log("muestra que se envio:", sample);
   const token = localStorage.getItem("jwt");
   const response = await fetch(`${API_URL}samples/`, {
     method: "post",
@@ -42,7 +41,7 @@ export async function postSample(sample) {
   });
 
   if (response.ok) {
-    message.success("Se mandó la solicitud correctamente");
+    message.success("Se envió la solicitud correctamente");
     const data = await response.json();
     return data;
   }
