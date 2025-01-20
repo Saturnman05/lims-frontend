@@ -30,6 +30,7 @@ export async function getSubCategorysOptions() {
 }
 
 export async function postSample(sample) {
+  console.log("muestra que se envio:", sample);
   const token = localStorage.getItem("jwt");
   const response = await fetch(`${API_URL}samples/`, {
     method: "post",

@@ -43,19 +43,51 @@ export default function RequestSample() {
     {
       category: "Files 1",
       fields: [
-        { name: "certificadoRegistroMercantil", label: "Copia del Certificado de Registro Mercantil del Representante Legal del Producto en la República Dominicana", type: "checkbox" },
-        { name: "poderRepresentacion", label: "Poder de Representación emitido por el Titular del Producto al Representante Legal en la República Dominicana", type: "checkbox" },
-        { name: "certificadoMarca", label: "Copia del Certificado de Marca del producto, emitido por la Oficina Nacional de la Propiedad Industrial (ONAPI)", type: "checkbox" },
+        { 
+          name: "certificadoRegistroMercantil", 
+          label: "Copia del Certificado de Registro Mercantil del Representante Legal del Producto en la República Dominicana", 
+          type: "checkbox",
+        },
+        { 
+          name: "poderRepresentacion", 
+          label: "Poder de Representación emitido por el Titular del Producto al Representante Legal en la República Dominicana", 
+          type: "checkbox",
+        },
+        { 
+          name: "certificadoMarca", 
+          label: "Copia del Certificado de Marca del producto, emitido por la Oficina Nacional de la Propiedad Industrial (ONAPI)", 
+          type: "checkbox",
+        },
       ]
     },
     {
       category: "Files 2",
       fields: [
-        { name: "permisoSanitario", label: "Copia del Permiso Sanitario del Establecimiento o local donde se elabora el producto, emitido por DIGEMAPS ", type: "checkbox" },
-        { name: "contratoFabricacion", label: "Copia del contrato de Fabricación o Maquila", type: "checkbox" },
-        { name: "contratoAcondicionamiento", label: "Copia del contrato de Acondicionamiento", type: "checkbox" },
-        { name: "listadoIngredientes", label: "Listado de Ingredientes del producto", type: "checkbox" },
-        { name: "analisisOriginalProducto", label: "Certificado de análisis original de producto terminado", type: "checkbox" },
+        { 
+          name: "permisoSanitario", 
+          label: "Copia del Permiso Sanitario del Establecimiento o local donde se elabora el producto, emitido por DIGEMAPS ", 
+          type: "checkbox",
+        },
+        { 
+          name: "contratoFabricacion", 
+          label: "Copia del contrato de Fabricación o Maquila", 
+          type: "checkbox",
+        },
+        { 
+          name: "contratoAcondicionamiento", 
+          label: "Copia del contrato de Acondicionamiento", 
+          type: "checkbox",
+        },
+        { 
+          name: "listadoIngredientes", 
+          label: "Listado de Ingredientes del producto", 
+          type: "checkbox",
+        },
+        { 
+          name: "analisisOriginalProducto", 
+          label: "Certificado de análisis original de producto terminado", 
+          type: "checkbox",
+        },
       ]
     },
     {
@@ -72,6 +104,12 @@ export default function RequestSample() {
         { name: "diagramaFlujo", label: "Descripción de la elaboración Diagrama de Flujo del producto", type: "checkbox" },
         { name: "arteEtiqueta", label: "Arte de etiquetas que cumpla con las directrices NORDOM 53", type: "checkbox" },
         { name: "reciboPagoServicios", label: "Recibo de pago de servicios", type: "checkbox" },
+      ]
+    },
+    {
+      category: "Files",
+      fields: [
+        { name: "file", label: "file", type: "file" },
       ]
     }
   ];
@@ -99,6 +137,7 @@ export default function RequestSample() {
   }, []);
 
   const handleSubmit = async (formData) => {
+    console.log("jlkjl;kj");
     try {
       setIsSubmitting(true);
       const response = await postSample(formData);
@@ -121,7 +160,7 @@ export default function RequestSample() {
   return (
     <FormWrapper
       formPages={formPages}
-      onFinish={handleSubmit}
+      onSubmit={handleSubmit}
       isSubmitting={isSubmitting}
       breadCrumbItems={[
         { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
