@@ -41,77 +41,89 @@ export default function RequestSample() {
       ],
     },
     {
-      category: "Files 1",
+      category: "Registro Mercantil",
       fields: [
-        { 
-          name: "certificadoRegistroMercantil", 
-          label: "Copia del Certificado de Registro Mercantil del Representante Legal del Producto en la República Dominicana", 
-          type: "checkbox",
-        },
-        { 
-          name: "poderRepresentacion", 
-          label: "Poder de Representación emitido por el Titular del Producto al Representante Legal en la República Dominicana", 
-          type: "checkbox",
-        },
-        { 
-          name: "certificadoMarca", 
-          label: "Copia del Certificado de Marca del producto, emitido por la Oficina Nacional de la Propiedad Industrial (ONAPI)", 
-          type: "checkbox",
-        },
+        { name: "certificadoRegistroMercantil", label: "Copia del Certificado de Registro Mercantil del Representante Legal del Producto en la República Dominicana", type: "file" },
       ]
     },
     {
-      category: "Files 2",
+      category: "Poder de Representación",
       fields: [
-        { 
-          name: "permisoSanitario", 
-          label: "Copia del Permiso Sanitario del Establecimiento o local donde se elabora el producto, emitido por DIGEMAPS ", 
-          type: "checkbox",
-        },
-        { 
-          name: "contratoFabricacion", 
-          label: "Copia del contrato de Fabricación o Maquila", 
-          type: "checkbox",
-        },
-        { 
-          name: "contratoAcondicionamiento", 
-          label: "Copia del contrato de Acondicionamiento", 
-          type: "checkbox",
-        },
-        { 
-          name: "listadoIngredientes", 
-          label: "Listado de Ingredientes del producto", 
-          type: "checkbox",
-        },
-        { 
-          name: "analisisOriginalProducto", 
-          label: "Certificado de análisis original de producto terminado", 
-          type: "checkbox",
-        },
+        { name: "poderRepresentacion", label: "Poder de Representación emitido por el Titular del Producto al Representante Legal en la República Dominicana", type: "file" },
       ]
     },
     {
-      category: "Files 3",
+      category: "Certificado de Marca",
       fields: [
-        { name: "analisisOriginalMateriales", label: "Certificado de análisis original de los materiales de referencias (estándares), conteniendo", type: "checkbox" },
-        { name: "estudioEstabilidad", label: "Estudio de Estabilidad o de Vida Útil del producto", type: "checkbox" },
-        { name: "especificacionEmpaque", label: "Esquema y especificaciones de empaque primario del producto ", type: "checkbox" },
+        { name: "certificadoMarca", label: "Copia del Certificado de Marca del producto, emitido por la Oficina Nacional de la Propiedad Industrial (ONAPI)", type: "file" },
       ]
     },
     {
-      category: "Files 4",
+      category: "Permiso Sanitario",
       fields: [
-        { name: "diagramaFlujo", label: "Descripción de la elaboración Diagrama de Flujo del producto", type: "checkbox" },
-        { name: "arteEtiqueta", label: "Arte de etiquetas que cumpla con las directrices NORDOM 53", type: "checkbox" },
-        { name: "reciboPagoServicios", label: "Recibo de pago de servicios", type: "checkbox" },
+        { name: "permisoSanitario", label: "Copia del Permiso Sanitario del Establecimiento o local donde se elabora el producto, emitido por DIGEMAPS", type: "file" },
       ]
     },
     {
-      category: "Files",
+      category: "Contrato de Fabricación",
       fields: [
-        { name: "file", label: "file", type: "file" },
+        { name: "contratoFabricacion", label: "Copia del contrato de Fabricación o Maquila", type: "file" },
       ]
-    }
+    },
+    {
+      category: "Acondicionamiento",
+      fields: [
+        { name: "contratoAcondicionamiento", label: "Copia del contrato de Acondicionamiento", type: "file" },
+      ]
+    },
+    {
+      category: "Listado de Ingredientes",
+      fields: [
+        { name: "listadoIngredientes", label: "Listado de Ingredientes del producto", type: "file" },
+      ]
+    },
+    {
+      category: "Producto Terminado",
+      fields: [
+        { name: "analisisOriginalProducto", label: "Certificado de análisis original de producto terminado", type: "file" },
+      ]
+    },
+    {
+      category: "Materiales de Referencias",
+      fields: [
+        { name: "analisisOriginalMateriales", label: "Certificado de análisis original de los materiales de referencias (estándares), conteniendo", type: "file" },
+      ]
+    },
+    {
+      category: "Estudio de Estabilidad",
+      fields: [
+        { name: "estudioEstabilidad", label: "Estudio de Estabilidad o de Vida Útil del producto", type: "file" },
+      ]
+    },
+    {
+      category: "Esquema de empaque",
+      fields: [
+        { name: "especificacionEmpaque", label: "Esquema y especificaciones de empaque primario del producto", type: "file" },
+      ]
+    },
+    {
+      category: "Diagrama de Flujo",
+      fields: [
+        { name: "diagramaFlujo", label: "Descripción de la elaboración Diagrama de Flujo del producto", type: "file" },
+      ]
+    },
+    {
+      category: "NORDOM 53",
+      fields: [
+        { name: "arteEtiqueta", label: "Arte de etiquetas que cumpla con las directrices NORDOM 53", type: "file" },
+      ]
+    },
+    {
+      category: "Recibo de pago",
+      fields: [
+        { name: "reciboPagoServicios", label: "Recibo de pago de servicios", type: "file" },
+      ]
+    },
   ];
 
   useEffect(() => {
