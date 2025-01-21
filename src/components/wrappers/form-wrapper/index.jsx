@@ -4,7 +4,7 @@ import { Checkbox, Input, Button, Select } from "antd";
 import { PageWrapper } from "../page-wrapper";
 
 // Files
-import { InboxOutlined } from '@ant-design/icons';
+import { FileAddOutlined } from '@ant-design/icons';
 import { message, Upload } from 'antd';
 
 const { Dragger } = Upload;
@@ -30,14 +30,14 @@ const props = {
 };
 
 const FileUpload = () => (
-  <Dragger {...props}>
+  <Dragger {...props} style={{ backgroundColor: "#D2CFD6" }}>
     <p className="ant-upload-drag-icon">
-      <InboxOutlined />
+      <FileAddOutlined style={{ color: "black" }} />
     </p>
-    <p className="ant-upload-text">Click or drag file to this area to upload</p>
+    <p className="ant-upload-text">Haz clic o arrastra un archivo a esta área.</p>
     <p className="ant-upload-hint">
-      Support for a single or bulk upload. Strictly prohibited from uploading company data or other
-      banned files.
+      Soporte para una carga única o múltiple. Está estrictamente prohibido subir datos de la
+      empresa u otros archivos no permitidos.
     </p>
   </Dragger>
 );

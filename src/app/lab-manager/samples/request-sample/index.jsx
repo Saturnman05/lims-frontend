@@ -89,7 +89,7 @@ export default function RequestSample() {
       ]
     },
     {
-      category: "Materiales de Referencias",
+      category: "Materiales Referencias",
       fields: [
         { name: "analisisOriginalMateriales", label: "Certificado de análisis original de los materiales de referencias (estándares), conteniendo", type: "file" },
       ]
