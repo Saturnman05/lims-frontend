@@ -1,14 +1,13 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FormWrapper } from "../../../../components/wrappers/form-wrapper/index.jsx";
-import { getCategorysOptions, getSubCategorysOptions, postSample } from "../../../../api/samples/index.js";
+import { getCategorysOptions, getSubcategorysOptions, postSample } from "../../../../api/samples/index.js";
 import { useState, useEffect } from "react";
-import { message } from "antd";
 
 export default function RequestSample() {
+  const navigate = useNavigate();
   const [options, setOptions] = useState({
     categorys: [],
-    subCategorys: [],
-    allergens: [],
+    subcategorys: [],
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -20,7 +19,7 @@ export default function RequestSample() {
         { name: "productBrand", label: "Nombre del producto", type: "text" },
         { name: "comercialName", label: "Nombre comercial", type: "text" },
         { name: "category", label: "Categoría", type: "select", options: options.categorys },
-        { name: "subCategory", label: "Subcategoría", type: "select", options: options.subCategorys },
+        { name: "subCategory", label: "Subcategoría", type: "select", options: options.subcategorys },
         { name: "originCountry", label: "País de origen", type: "text" },
       ],
     },
@@ -129,18 +128,17 @@ export default function RequestSample() {
   useEffect(() => {
     const loadOptions = async () => {
       try {
-        const [categorys, subCategorys] = await Promise.all([
+        const [categorys, subcategorys] = await Promise.all([
           getCategorysOptions(),
-          getSubCategorysOptions()
+          getSubcategorysOptions()
         ]);
         
         setOptions((prev) => ({
           ...prev,
           categorys,
-          subCategorys,
+          subcategorys,
         }));
       } catch (error) {
-        message.error("Error al cargar las opciones del formulario");
         console.error("Error loading options:", error);
       }
     };
@@ -174,11 +172,10 @@ export default function RequestSample() {
       console.log(response);
       
       // Aquí puedes agregar redirección después del éxito si lo deseas
-      // navigate("/layout-lab-manager/samples");
+      navigate("/layout-lab-manager/samples");
       
     } catch (error) {
       console.error("Error submitting sample:", error);
-      message.error("Error al enviar la muestra: " + error.message);
     } finally {
       setIsSubmitting(false);
     }
