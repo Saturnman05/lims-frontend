@@ -172,7 +172,7 @@ export default function RequestSample() {
       console.log(response);
       
       // Aquí puedes agregar redirección después del éxito si lo deseas
-      navigate("/layout-lab-manager/samples");
+      navigate("/layout-master-company/samples");
       
     } catch (error) {
       console.error("Error submitting sample:", error);
@@ -187,8 +187,8 @@ export default function RequestSample() {
       onSubmit={handleSubmit}
       isSubmitting={isSubmitting}
       breadCrumbItems={[
-        { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
-        { title: <Link to="/layout-lab-manager/samples">Muestras</Link> },
+        { title: <Link to="/layout-master-company/home-master-company">Home</Link> },
+        { title: <Link to="/layout-master-company/samples">Muestras</Link> },
         { title: "Solicitud de muestra" },
       ]}
     />
