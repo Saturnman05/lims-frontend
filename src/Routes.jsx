@@ -24,16 +24,28 @@ export const Routes = [
     children: [
       { path: "home-lab-manager", element: <HomeLabManager /> },
       { path: "samples", element: <SampleLabManager /> },
-      { path: "samples/request", element: <RequestSample />},
+      { path: "samples/request", element: <RequestSample /> },
       { path: "samples/request/files", element: <SampleFiles /> },
       { path: "results-audit", element: <ResultsAuditLabManager /> },
       { path: "informs", element: <InformsLabManager /> },
       { path: "statistics", element: <StatisticsLabManager /> },
       { path: "management", element: <ManagementLabManager /> },
-      { path: "management/user-management-external/register", element: <ExternalRegisterLabManager /> },
-      { path: "management/user-management-external", element: <UserManagementExternalLabManager /> },
-      { path: "management/user-management-internal", element: <UserManagementInternalLabManager /> },
-      { path: "management/user-management-internal/register", element: <InternalRegisterLabManager /> },
+      {
+        path: "management/user-management-external/register",
+        element: <ExternalRegisterLabManager />,
+      },
+      {
+        path: "management/user-management-external",
+        element: <UserManagementExternalLabManager />,
+      },
+      {
+        path: "management/user-management-internal",
+        element: <UserManagementInternalLabManager />,
+      },
+      {
+        path: "management/user-management-internal/register",
+        element: <InternalRegisterLabManager />,
+      },
       { path: "support", element: <SupportLabManager /> },
     ],
   },
