@@ -49,7 +49,7 @@ export default function RegisterUserMasterCompany() {
         {
           title: (
             <Link to="/layout-master-company/user-management-master-company/register-user-master-company/">
-              Gestion de Usuarios Internos
+              Gestion de Usuarios
             </Link>
           ),
         },
