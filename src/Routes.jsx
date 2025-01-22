@@ -14,6 +14,12 @@ import ExternalRegisterLabManager from "./app/lab-manager/management/user-manage
 import InternalRegisterLabManager from "./app/lab-manager/management/user-management/internal-user-management/register/index.jsx";
 import RequestSample from "./app/lab-manager/samples/request-sample/index.jsx";
 import SampleFiles from "./app/lab-manager/samples/request-sample/files.jsx";
+import HomeMasterCompany from "./app/master-company/home-master-company/index.jsx";
+import InformsMasterCompany from "./app/master-company/informs-master-company";
+import StatisticsMasterCompany from "./app/master-company/statistics-master-company";
+import LayoutMasterCompany from "./components/master-company/layout-master-company/index.jsx"; 
+import UserManagementMasterCompany from "./app/master-company/user-management-master-company/index.jsx";
+import RegisterUserMasterCompany from "./app/master-company/user-management-master-company/register-user-master-company/index.jsx";
 
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
@@ -35,6 +41,29 @@ export const Routes = [
       { path: "management/user-management-internal", element: <UserManagementInternalLabManager /> },
       { path: "management/user-management-internal/register", element: <InternalRegisterLabManager /> },
       { path: "support", element: <SupportLabManager /> },
+    ],
+  },
+  {
+    path: "layout-master-company",
+    element: <LayoutMasterCompany/>,
+    children: [
+      { path: "home-master-company", element: <HomeMasterCompany /> },
+      { path: "samples", element: <SampleLabManager /> },
+      { path: "results-audit", element: <ResultsAuditLabManager /> },
+      { path: "informs-master-company", element: <InformsMasterCompany /> },
+      { path: "statistics-master-company", element: <StatisticsMasterCompany /> },
+      { 
+        path: "user-management-master-company", 
+        children: [
+          { path: "", element: <UserManagementMasterCompany /> },
+          {
+            path: "register-user-master-company",
+            children: [
+              { path: "", element: <RegisterUserMasterCompany /> },
+            ]
+          }
+        ] 
+      },
     ],
   },
 ];
