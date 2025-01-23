@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Table, Tag, Space, Input, Dropdown } from "antd";
 import { EyeOutlined, DeleteOutlined } from "@ant-design/icons";
-import { getAllUsers } from "../../../api/users";
+import { getUsersWithRole } from "../../../api/users";
 import { formatDateToDDMMYYY } from "../../../utils/functions.js"
 
 const { Search } = Input;
@@ -148,7 +148,7 @@ const UserManagementTable = () => {
 
   useEffect(() => {
     const loadUsers = async () => {
-      const users = await getAllUsers();
+      const users = await getUsersWithRole(1);
       const data = users.map(user => ({
         key: user.user_id,
         nombre: user.full_name,
