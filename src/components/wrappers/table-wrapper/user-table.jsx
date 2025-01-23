@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Table, Tag, Space, Input, Dropdown } from "antd";
 import { EyeOutlined, DeleteOutlined } from "@ant-design/icons";
 
@@ -40,6 +40,15 @@ const INITIAL_DATA = [
 const UserManagementTable = () => {
   const [selectedRole, setSelectedRole] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
+  const [animatedRows, setAnimatedRows] = useState([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimatedRows(INITIAL_DATA.map((row) => row.key));
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSearch = (value) => {
     console.log("Searching for:", value);
@@ -60,6 +69,10 @@ const UserManagementTable = () => {
   const handleStatusSelect = ({ key }) => {
     setSelectedStatus(key);
   };
+
+  function roleColors(rol) {
+    return rol === "Master" ? "bg-[#16D9CE]" : "bg-[#8B9AAD]";
+  }
 
   const columns = [
     {
@@ -93,7 +106,9 @@ const UserManagementTable = () => {
       key: "rol",
       render: (rol) => (
         <Tag
-          className={`rounded-lg px-3 py-1 border-0 bg-slate-200 text-slate-700`}>
+          className={`rounded-lg px-3 py-1 border-0 ${roleColors(
+            rol
+          )} text-white`}>
           {rol}
         </Tag>
       ),
@@ -129,8 +144,8 @@ const UserManagementTable = () => {
   ];
 
   return (
-    <div className="p-4">
-      <div className="flex items-center gap-4 mb-4">
+    <div className="p-4 w-full table">
+      <div className="flex gap-4 mb-4 self-start">
         <div className="relative">
           <Search
             placeholder="Nombre del usuario"
@@ -181,12 +196,20 @@ const UserManagementTable = () => {
         dataSource={INITIAL_DATA}
         columns={columns}
         pagination={false}
-        className="bg-white"
-        rowClassName="bg-white hover:bg-slate-50"
+        className="bg-white w-[100%]"
+        rowClassName={(record) =>
+          `bg-white hover:bg-slate-50 ${
+            animatedRows.includes(record.key)
+              ? "animate-fade-in"
+              : "animate-none"
+          }`
+        }
         components={{
           header: {
             cell: ({ children, ...props }) => (
-              <th {...props} className="bg-slate-50 text-slate-600 font-medium">
+              <th
+                {...props}
+                className="bg-slate-50 text-slate-600 font-medium ">
                 {children}
               </th>
             ),

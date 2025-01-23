@@ -17,7 +17,7 @@ export default function UserManagementInternalLabManager() {
         },
       ]}>
       <>
-        <div className="flex justify-start">
+        <div className="flex ">
           <TableUserslabManager />
         </div>
       </>

@@ -1,61 +1,64 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { UserOutlined, DownOutlined } from "@ant-design/icons";
 import "../../../styles/lab-manager/nav-lab-manager/index.css";
 import { Avatar, Dropdown } from "antd";
 
-const itemsManagement = [
-  {
-    key: "1",
-    type: "group",
-    label: "Gestión de Usuarios",
-    children: [
-      {
-        key: "1-1",
-        label: "Internos",
-        children: [
-          {
-            key: "1-1-1",
-            label: "Registrar Usuario",
-            onClick: () => {
-              window.location.href =
-                "/layout-lab-manager/management/user-management-internal/register";
-            },
-          },
-          {
-            key: "1-1-2",
-            label: "Listar Usuarios",
-            onClick: () => {
-              window.location.href = "management/user-management-internal";
-            },
-          },
-        ],
-      },
-      {
-        key: "1-2",
-        label: "Externos",
-        children: [
-          {
-            key: "1-2-1",
-            label: "Registrar Usuario",
-            onClick: () => {
-              window.location.href =
-                "/layout-lab-manager/management/user-management-external/register";
-            },
-          },
-          {
-            key: "1-2-2",
-            label: "Listar Usuarios",
-            onClick: () => {
-              window.location.href = "management/user-management-external";
-            },
-          },
-        ],
-      },
-    ],
-  },
-];
 export default function NavLabManager() {
+  const navigate = useNavigate();
+  const itemsManagement = [
+    {
+      key: "1",
+      type: "group",
+      label: "Gestión de Usuarios",
+      children: [
+        {
+          key: "1-1",
+          label: "Internos",
+          children: [
+            {
+              key: "1-1-1",
+              label: "Registrar Usuario",
+              onClick: () => {
+                window.location.href =
+                  "/layout-lab-manager/management/user-management-internal/register";
+              },
+            },
+            {
+              key: "1-1-2",
+              label: "Listar Usuarios",
+              onClick: () => {
+                navigate(
+                  "/layout-lab-manager/management/user-management-internal"
+                );
+              },
+            },
+          ],
+        },
+        {
+          key: "1-2",
+          label: "Externos",
+          children: [
+            {
+              key: "1-2-1",
+              label: "Registrar Usuario",
+              onClick: () => {
+                window.location.href =
+                  "/layout-lab-manager/management/user-management-external/register";
+              },
+            },
+            {
+              key: "1-2-2",
+              label: "Listar Usuarios",
+              onClick: () => {
+                window.location.href = "management/user-management-external";
+              },
+            },
+          ],
+        },
+      ],
+    },
+  ];
   return (
     <nav className="nav-lab-header">
       <div className="navbar-logo">

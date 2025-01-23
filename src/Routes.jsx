@@ -35,7 +35,6 @@ export const Routes = [
       { path: "home-lab-manager", element: <HomeLabManager /> },
       { path: "samples", element: <SampleLabManager /> },
       { path: "samples/request", element: <RequestSample /> },
-      { path: "samples/request/files", element: <SampleFiles /> },
       { path: "results-audit", element: <ResultsAuditLabManager /> },
       { path: "informs", element: <InformsLabManager /> },
       { path: "statistics", element: <StatisticsLabManager /> },
