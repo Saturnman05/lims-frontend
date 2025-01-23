@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Table, Tag, Space, Input, Dropdown } from "antd";
 import { EyeOutlined, DeleteOutlined } from "@ant-design/icons";
-
+import "../../../styles/wrappers/table-wrapper/user-table.css";
 const { Search } = Input;
 
 const ROLE_OPTIONS = [
@@ -37,7 +37,7 @@ const INITIAL_DATA = [
   },
 ];
 
-const UserManagementTable = () => {
+const InternalUserManagementTable = () => {
   const [selectedRole, setSelectedRole] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [animatedRows, setAnimatedRows] = useState([]);
@@ -145,7 +145,7 @@ const UserManagementTable = () => {
 
   return (
     <div className="p-4 w-full table">
-      <div className="flex gap-4 mb-4 self-start">
+      <div className="flex gap-60 mb-4 self-start">
         <div className="relative">
           <Search
             placeholder="Nombre del usuario"
@@ -220,4 +220,4 @@ const UserManagementTable = () => {
   );
 };
 
-export default UserManagementTable;
+export default InternalUserManagementTable;
