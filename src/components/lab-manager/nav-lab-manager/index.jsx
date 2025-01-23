@@ -12,41 +12,49 @@ const itemsManagement = [
     children: [
       {
         key: "1-1",
-        label: "internos",
+        label: "Internos",
         children: [
-          { key: "1-1-1", label: "Registrar Usuario" },
-          { key: "1-1-2", label: "Listar Usuarios" },
+          {
+            key: "1-1-1",
+            label: "Registrar Usuario",
+            onClick: () => {
+              window.location.href =
+                "/layout-lab-manager/management/user-management-internal/register";
+            },
+          },
+          {
+            key: "1-1-2",
+            label: "Listar Usuarios",
+            onClick: () => {
+              window.location.href = "management/user-management-internal";
+            },
+          },
         ],
       },
       {
         key: "1-2",
-        label: "externos",
+        label: "Externos",
         children: [
-          { key: "1-2-1", label: "Registrar Usuario" },
-          { key: "1-2-2", label: "Listar Usuarios" },
+          {
+            key: "1-2-1",
+            label: "Registrar Usuario",
+            onClick: () => {
+              window.location.href =
+                "/layout-lab-manager/management/user-management-external/register";
+            },
+          },
+          {
+            key: "1-2-2",
+            label: "Listar Usuarios",
+            onClick: () => {
+              window.location.href = "management/user-management-external";
+            },
+          },
         ],
       },
     ],
   },
-  {
-    key: "2",
-    label: "sub menu",
-    children: [
-      { key: "2-1", label: "3rd menu item" },
-      { key: "2-2", label: "4th menu item" },
-    ],
-  },
-  {
-    key: "3",
-    label: "disabled sub menu",
-    disabled: true,
-    children: [
-      { key: "3-1", label: "5th menu item" },
-      { key: "3-2", label: "6th menu item" },
-    ],
-  },
 ];
-
 export default function NavLabManager() {
   return (
     <nav className="nav-lab-header">
