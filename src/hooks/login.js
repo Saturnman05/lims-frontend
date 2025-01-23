@@ -24,7 +24,11 @@ export function useLogin() {
   const onFinish = async (values) => {
     try {
       await logIn(values);
-      navigate("/layout-lab-manager/home-lab-manager/");
+      const userRol = localStorage.getItem("userRol");
+      if (userRol.rolName)
+        navigate("/layout-lab-manager/home-lab-manager/");
+      else
+        navigate("/layout-master-company/home-master-company/");
     } catch (error) {
       console.error(error);
     }
