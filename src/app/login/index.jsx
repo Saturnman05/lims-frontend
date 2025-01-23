@@ -28,7 +28,7 @@ export default function LogIn() {
             },
           },
         }}
-        backgroundImageUrl="https://mdn.alipayobjects.com/huamei_gcee1x/afts/img/A*y0ZTS6WLwvgAAAAAAAAAAAAADml6AQ/fmt.webp"
+        backgroundImageUrl="https://fedecocina.net/imagenes/16x9/cocina-para-diabeticos-recetas-y-consejos-para-una-dieta-saludable.jpg"
         logo="https://cdn-icons-png.flaticon.com/512/257/257815.png"
         backgroundVideoUrl={video}
         title="LIMS"
