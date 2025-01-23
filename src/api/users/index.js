@@ -58,3 +58,23 @@ export async function postInternalUser(user) {
   return error;
 }
 
+export async function getLabUserRoles() {
+  const token = localStorage.getItem("jwt");
+  const response = await fetch(`${API_URL}roles/`, {
+    method: "get",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    const roles = data.map(rol => ({"value": rol.role_id, "label": rol.role_name}));
+    console.log("roles:", roles);
+    return roles;
+  }
+
+  const error = await response.json();
+  message.error("Error al cargar los roles de usuarios");
+  return error;
+} 

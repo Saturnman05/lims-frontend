@@ -3,6 +3,7 @@ import { message } from "antd";
 import users from "./mock-users.json";
 
 export async function logIn (user) {
+  // Guardar el token
   const response = await fetch(`${API_URL}token/`, {
     method: "post",
     headers: {
@@ -20,6 +21,25 @@ export async function logIn (user) {
   } else {
     message.error("Error. Nombre de usuario o contraseña incorrecta");
     throw new Error("Error. Nombre de usuario o contraseña incorrecta.")
+  }
+
+  // Guardar el rol
+  const token = localStorage.getItem("jwt");
+  const rolResponse = await fetch(`${API_URL}users/role/`, {
+    method: "get",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  });
+
+  if (rolResponse.ok) {
+    const data = await rolResponse.json();
+    console.log(data);
+    const roles = data.map(rol => ({rolId: rol.role_id, rolName: rol.role_name, isMaster: rol.is_master}));
+    if (data.length > 0) localStorage.setItem("userRol", JSON.stringify(roles));
+  } else {
+    message.error("Error. Al encontrar tu rol de usuario.");
+    throw new Error("Error")
   }
 }
 

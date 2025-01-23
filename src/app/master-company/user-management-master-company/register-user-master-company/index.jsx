@@ -13,9 +13,8 @@ const formPages = [
     ],
   },
   {
-    category: "Datos del Usuario",
+    category: "Datos de la Empresa",
     fields: [
-      { name: "username", label: "Nombre de Usuario", type: "text" },
       {
         name: "rol",
         label: "Rol",
@@ -25,12 +24,17 @@ const formPages = [
           { value: "Master", label: "Master" },
         ],
       },
+      { name: "companyName", label: "Nombre de la Compañía", type: "text" },
+      { name: "comercialName", label: "Nombre Comercial", type: "text" },
+      { name: "rnc", label: "RNC", type: "text" },
+    ],
+  },
+  {
+    category: "Datos del Usuario",
+    fields: [
+      { name: "username", label: "Nombre de Usuario", type: "text" },
       { name: "password", label: "Contraseña", type: "password" },
-      {
-        name: "confirmPassword",
-        label: "Confirmar Contraseña",
-        type: "password",
-      },
+      { name: "confirmPassword", label: "Confirmar Contraseña", type: "password" },
     ],
   },
 ];
