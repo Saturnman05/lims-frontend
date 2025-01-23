@@ -25,7 +25,7 @@ export function useLogin() {
     try {
       await logIn(values);
       const userRol = localStorage.getItem("userRol");
-      if (userRol) 
+      if (userRol.rolName)
         navigate("/layout-lab-manager/home-lab-manager/");
       else
         navigate("/layout-master-company/home-master-company/");

@@ -34,7 +34,9 @@ export async function logIn (user) {
 
   if (rolResponse.ok) {
     const data = await rolResponse.json();
-    if (data.length > 0) localStorage.setItem("userRol", `{"rolId": ${data[0].role_id}, "rolName": ${data[0].role_name}}`);
+    console.log(data);
+    const roles = data.map(rol => ({rolId: rol.role_id, rolName: rol.role_name, isMaster: rol.is_master}));
+    if (data.length > 0) localStorage.setItem("userRol", JSON.stringify(roles));
   } else {
     message.error("Error. Al encontrar tu rol de usuario.");
     throw new Error("Error")
