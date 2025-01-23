@@ -16,11 +16,9 @@ export default function UserManagementInternalLabManager() {
           title: "Gestion de Usuarios Internos",
         },
       ]}>
-      <>
-        <div className="flex ">
-          <TableUserslabManager />
-        </div>
-      </>
+      <div className="flex">
+        <TableUserslabManager />
+      </div>
     </PageWrapper>
   );
 }

@@ -77,4 +77,24 @@ export async function getLabUserRoles() {
   const error = await response.json();
   message.error("Error al cargar los roles de usuarios");
   return error;
-} 
+}
+
+export async function getAllUsers() {
+  const token = localStorage.getItem("jwt");
+  const response = await fetch(`${API_URL}users/`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  }
+
+  const error = await response.json();
+  console.error("error en la coneccion", error);
+  message.error("Error al cargar los usuarios");
+  return error;
+}

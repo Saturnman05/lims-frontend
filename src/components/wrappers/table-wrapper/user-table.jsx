@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Table, Tag, Space, Input, Dropdown } from "antd";
 import { EyeOutlined, DeleteOutlined } from "@ant-design/icons";
+import { getAllUsers } from "../../../api/users";
+import { formatDateToDDMMYYY } from "../../../utils/functions.js"
 
 const { Search } = Input;
 
@@ -41,6 +43,7 @@ const UserManagementTable = () => {
   const [selectedRole, setSelectedRole] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [animatedRows, setAnimatedRows] = useState([]);
+  const [rows, setRows] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -143,6 +146,24 @@ const UserManagementTable = () => {
     },
   ];
 
+  useEffect(() => {
+    const loadUsers = async () => {
+      const users = await getAllUsers();
+      const data = users.map(user => ({
+        key: user.user_id,
+        nombre: user.full_name,
+        cedula: user.cedula,
+        correo: user.email,
+        fechaRegistro: formatDateToDDMMYYY(user.date_joined),
+        telefono: user.phone,
+        rol: user.is_master ? "Master" : "Empleado",
+        activo: user.active,
+      }))
+      setRows(data);
+    }
+    loadUsers();
+  }, []);
+
   return (
     <div className="p-4 w-full table">
       <div className="flex gap-4 mb-4 self-start">
@@ -193,7 +214,7 @@ const UserManagementTable = () => {
       </div>
 
       <Table
-        dataSource={INITIAL_DATA}
+        dataSource={rows}
         columns={columns}
         pagination={false}
         className="bg-white w-[100%]"
