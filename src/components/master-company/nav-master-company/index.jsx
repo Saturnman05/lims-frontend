@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 import { UserOutlined, DownOutlined } from "@ant-design/icons";
 import "../../../styles/lab-manager/nav-lab-manager/index.css";
 import { Avatar, Dropdown } from "antd";
+import { useLogout } from "../../../hooks/logout.js"
 
 export default function NavMasterCompany() {
   const navigate = useNavigate();
+  const { logout } = useLogout();
   const itemsManagement = [
     {
       key: "1",
@@ -57,6 +59,14 @@ export default function NavMasterCompany() {
       },
     },
   ];
+
+  const itemAccount = [
+    {
+      key: "1",
+      label: "logout",
+      onClick: logout,
+    }
+  ]
   return (
     <nav className="nav-lab-header">
       <div className="navbar-logo">
@@ -86,7 +96,9 @@ export default function NavMasterCompany() {
           <CustomLink to="/layout-lab-manager/support">Soporte</CustomLink>
         </li>
         <li>
-          <Avatar className="custom-avatar" size={30} icon={<UserOutlined />} />
+          <Dropdown menu={{ items: itemAccount}}>
+            <Avatar className="custom-avatar" size={30} icon={<UserOutlined />} />
+          </Dropdown>
         </li>
       </ul>
     </nav>
