@@ -22,8 +22,8 @@ import StatisticsMasterCompany from "./app/master-company/statistics-master-comp
 import LayoutMasterCompany from "./components/master-company/layout-master-company/index.jsx";
 import UserManagementMasterCompany from "./app/master-company/user-management-master-company/index.jsx";
 import RegisterUserMasterCompany from "./app/master-company/user-management-master-company/register-user-master-company/index.jsx";
-import SampleMasterCompany from "./app/master-company/samples/index.jsx";
-import RequestSample from "./app/master-company/samples/request-sample/index.jsx";
+import SampleMasterCompany from "./app/master-company/samples-master-company/index.jsx";
+import RequestSample from "./app/master-company/samples-master-company/request-sample/index.jsx";
 
 export const Routes = [
   { path: "*", element: <NotFoundPage /> },
@@ -79,6 +79,7 @@ export const Routes = [
             path: "register-user-master-company",
             children: [{ path: "", element: <RegisterUserMasterCompany /> }],
           },
+          { path: "samples", element: <SampleMasterCompany /> },
         ],
       },
     ],
