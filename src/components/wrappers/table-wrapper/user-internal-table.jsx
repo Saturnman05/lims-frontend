@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
 import { Table, Tag, Space, Input, Dropdown } from "antd";
 import { EyeOutlined, DeleteOutlined } from "@ant-design/icons";
-<<<<<<< HEAD:src/components/wrappers/table-wrapper/user-table.jsx
 import { getUsersWithRole } from "../../../api/users";
 import { formatDateToDDMMYYY } from "../../../utils/functions.js"
 
-=======
 import "../../../styles/wrappers/table-wrapper/user-table.css";
->>>>>>> d94d5101782cb03588725a326c926c79894dee31:src/components/wrappers/table-wrapper/user-internal-table.jsx
 const { Search } = Input;
 
 const ROLE_OPTIONS = [
