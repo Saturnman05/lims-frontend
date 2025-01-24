@@ -79,21 +79,6 @@ const InternalUserManagementTable = () => {
       ? "text-teal-500 border-b-2 border-teal-500"
       : "text-gray-600 border-b-2 border-gray-600 hover:text-teal-500";
 
-  const renderCustomTag = (text, colorMap) => {
-    const style = colorMap[text] || {};
-    return (
-      <span
-        style={{
-          display: "inline-block",
-          padding: "4px 12px",
-          borderRadius: "8px",
-          fontWeight: 500,
-          ...style,
-        }}>
-        {text}
-      </span>
-    );
-  };
   const columns = [
     {
       title: "Nombre",

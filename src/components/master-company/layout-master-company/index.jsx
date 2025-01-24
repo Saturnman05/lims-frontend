@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import { NavMasterCompany } from "../nav-master-company";
+import NavMasterCompany from "../nav-master-company/index";
 import "../../../styles/master-company/layout-master-company/index.css";
 
 export default function LayoutMasterCompany() {
