@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { PageWrapper } from "../../../../../components/wrappers/page-wrapper/index.jsx";
-import TableUserslabManager from "../../../../../components/wrappers/table-wrapper/user-table.jsx";
+import InternalUserManagementTable from "../../../../../components/wrappers/table-wrapper/user-internal-table.jsx";
 
 export default function UserManagementInternalLabManager() {
   return (
@@ -16,9 +16,9 @@ export default function UserManagementInternalLabManager() {
           title: "Gestion de Usuarios Internos",
         },
       ]}>
-      <div className="flex">
-        <TableUserslabManager />
-      </div>
+      <>
+        <InternalUserManagementTable />
+      </>
     </PageWrapper>
   );
 }

@@ -20,8 +20,9 @@ export default function NavLabManager() {
               key: "1-1-1",
               label: "Registrar Usuario",
               onClick: () => {
-                window.location.href =
-                  "/layout-lab-manager/management/user-management-internal/register";
+                navigate(
+                  "/layout-lab-manager/management/user-management-internal/register"
+                );
               },
             },
             {
@@ -43,15 +44,18 @@ export default function NavLabManager() {
               key: "1-2-1",
               label: "Registrar Usuario",
               onClick: () => {
-                window.location.href =
-                  "/layout-lab-manager/management/user-management-external/register";
+                navigate(
+                  "/layout-lab-manager/management/user-management-external/register"
+                );
               },
             },
             {
               key: "1-2-2",
               label: "Listar Usuarios",
               onClick: () => {
-                window.location.href = "management/user-management-external";
+                navigate(
+                  "/layout-lab-manager/management/user-management-external"
+                );
               },
             },
           ],

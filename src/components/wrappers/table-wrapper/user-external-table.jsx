@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import { Table, Tag, Space, Input, Dropdown } from "antd";
 import { EyeOutlined, DeleteOutlined } from "@ant-design/icons";
-import { getUsersWithRole } from "../../../api/users";
-import { formatDateToDDMMYYY } from "../../../utils/functions.js"
-
+import "../../../styles/wrappers/table-wrapper/user-table.css";
 const { Search } = Input;
 
 const ROLE_OPTIONS = [
@@ -39,11 +37,10 @@ const INITIAL_DATA = [
   },
 ];
 
-const UserManagementTable = () => {
+const InternalUserManagementTable = () => {
   const [selectedRole, setSelectedRole] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [animatedRows, setAnimatedRows] = useState([]);
-  const [rows, setRows] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -74,9 +71,29 @@ const UserManagementTable = () => {
   };
 
   function roleColors(rol) {
-    return rol === "Master" ? "bg-[#16D9CE]" : "bg-[#8B9AAD]";
+    return rol === "Master" ? "bg-[#078C85]" : "bg-[#8B9AAD]";
   }
 
+  const dropdownButtonStyle = (isSelected) =>
+    isSelected
+      ? "text-teal-500 border-b-2 border-teal-500"
+      : "text-gray-600 border-b-2 border-gray-600 hover:text-teal-500";
+
+  const renderCustomTag = (text, colorMap) => {
+    const style = colorMap[text] || {};
+    return (
+      <span
+        style={{
+          display: "inline-block",
+          padding: "4px 12px",
+          borderRadius: "8px",
+          fontWeight: 500,
+          ...style,
+        }}>
+        {text}
+      </span>
+    );
+  };
   const columns = [
     {
       title: "Nombre",
@@ -146,27 +163,9 @@ const UserManagementTable = () => {
     },
   ];
 
-  useEffect(() => {
-    const loadUsers = async () => {
-      const users = await getUsersWithRole(1);
-      const data = users.map(user => ({
-        key: user.user_id,
-        nombre: user.full_name,
-        cedula: user.cedula,
-        correo: user.email,
-        fechaRegistro: formatDateToDDMMYYY(user.date_joined),
-        telefono: user.phone,
-        rol: user.is_master ? "Master" : "Empleado",
-        activo: user.active,
-      }))
-      setRows(data);
-    }
-    loadUsers();
-  }, []);
-
   return (
     <div className="p-4 w-full table">
-      <div className="flex gap-4 mb-4 self-start">
+      <div className="flex gap-60 mb-4 self-start">
         <div className="relative">
           <Search
             placeholder="Nombre del usuario"
@@ -185,11 +184,9 @@ const UserManagementTable = () => {
           }}
           placement="bottomLeft">
           <button
-            className={`cursor-pointer font-medium ${
+            className={`flex items-center ${dropdownButtonStyle(
               selectedRole
-                ? "text-teal-500 hover:text-teal-600"
-                : "text-gray-500 hover:text-gray-600"
-            }`}>
+            )}`}>
             Rol
           </button>
         </Dropdown>
@@ -203,18 +200,16 @@ const UserManagementTable = () => {
           }}
           placement="bottomLeft">
           <button
-            className={`cursor-pointer font-medium ${
+            className={`flex items-center ${dropdownButtonStyle(
               selectedStatus
-                ? "text-teal-500 hover:text-teal-600"
-                : "text-gray-500 hover:text-gray-600"
-            }`}>
+            )}`}>
             Estado
           </button>
         </Dropdown>
       </div>
 
       <Table
-        dataSource={rows}
+        dataSource={INITIAL_DATA}
         columns={columns}
         pagination={false}
         className="bg-white w-[100%]"
@@ -241,4 +236,4 @@ const UserManagementTable = () => {
   );
 };
 
-export default UserManagementTable;
+export default InternalUserManagementTable;
