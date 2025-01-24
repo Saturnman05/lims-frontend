@@ -1,44 +1,46 @@
 import { Link, useNavigate } from "react-router";
 import { FormWrapper } from "../../../../../../components/wrappers/form-wrapper/index.jsx";
-import { postInternalUser } from "../../../../../../api/users/index.js"; // Importa la función
+import { getLabUserRoles, postInternalUser } from "../../../../../../api/users/index.js";
 import { message } from "antd";
-
-const formPages = [
-  {
-    category: "Datos Personales",
-    fields: [
-      { name: "name", label: "Nombre", type: "text" },
-      { name: "lastName", label: "Apellido", type: "text" },
-      { name: "cedula", label: "Cédula", type: "text" },
-      { name: "email", label: "Correo Institucional", type: "email" },
-      { name: "phone", label: "Teléfono", type: "text" },
-    ],
-  },
-  {
-    category: "Datos del Usuario",
-    fields: [
-      { name: "username", label: "Nombre de Usuario", type: "text" },
-      {
-        name: "rol",
-        label: "Rol",
-        type: "select",
-        options: [
-          { value: "Empleado", label: "Empleado" },
-          { value: "Master", label: "Master" },
-        ],
-      },
-      { name: "password", label: "Contraseña", type: "password" },
-      {
-        name: "confirmPassword",
-        label: "Confirmar Contraseña",
-        type: "password",
-      },
-    ],
-  },
-];
+import { useEffect, useState } from "react";
 
 export default function InternalRegisterLabManager() {
+  const [userRoles, setUserRoles] = useState([]);
   const navigate = useNavigate();
+
+  const formPages = [
+    {
+      category: "Datos Personales",
+      fields: [
+        { name: "name", label: "Nombre", type: "text" },
+        { name: "lastName", label: "Apellido", type: "text" },
+        { name: "cedula", label: "Cédula", type: "text" },
+        { name: "email", label: "Correo Institucional", type: "email" },
+        { name: "phone", label: "Teléfono", type: "text" },
+      ],
+    },
+    {
+      category: "Datos del Usuario",
+      fields: [
+        { name: "username", label: "Nombre de Usuario", type: "text" },
+        { name: "rol", label: "Rol", type: "select", options: userRoles },
+        { name: "password", label: "Contraseña", type: "password" },
+        { name: "confirmPassword", label: "Confirmar Contraseña", type: "password" },
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    const loadRoles = async () => {
+      try {
+        const roles = await getLabUserRoles();
+        setUserRoles(roles);
+      } catch (error) {
+        console.error("error:", error);
+      }
+    };
+    loadRoles();
+  }, []);
 
   const onSubmit = async (user) => {
     if (user.password !== user.confirmPassword) {
@@ -68,7 +70,7 @@ export default function InternalRegisterLabManager() {
   return (
     <FormWrapper
       formPages={formPages}
-      onSubmit={onSubmit} // Asegúrate de pasar la función onSubmit al FormWrapper
+      onSubmit={onSubmit}
       breadCrumbItems={[
         { title: <Link to="/layout-lab-manager/home-lab-manager">Home</Link> },
         {

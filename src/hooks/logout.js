@@ -6,6 +6,7 @@ export function useLogout () {
     console.log("logout");
     localStorage.removeItem("jwt");
     localStorage.removeItem("refresh");
+    localStorage.removeItem("userRol");
     navigate("/");
   };
   return { logout }

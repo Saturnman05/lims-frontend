@@ -3,6 +3,45 @@ import PropTypes from "prop-types";
 import { Checkbox, Input, Button, Select } from "antd";
 import { PageWrapper } from "../page-wrapper";
 
+// Files
+import { FileAddOutlined } from '@ant-design/icons';
+import { message, Upload } from 'antd';
+
+const { Dragger } = Upload;
+
+const props = {
+  name: 'file',
+  multiple: true,
+  action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+  onChange(info) {
+    const { status } = info.file;
+    if (status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully.`);
+    } else if (status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+  onDrop(e) {
+    console.log('Dropped files', e.dataTransfer.files);
+  },
+};
+
+const FileUpload = () => (
+  <Dragger {...props} style={{ backgroundColor: "#D2CFD6" }}>
+    <p className="ant-upload-drag-icon">
+      <FileAddOutlined style={{ color: "black" }} />
+    </p>
+    <p className="ant-upload-text">Haz clic o arrastra un archivo a esta área.</p>
+    <p className="ant-upload-hint">
+      Soporte para una carga única o múltiple. Está estrictamente prohibido subir datos de la
+      empresa u otros archivos no permitidos.
+    </p>
+  </Dragger>
+);
+
 // ---------------------------------------------------
 // NAVIGATION
 // ---------------------------------------------------
@@ -11,7 +50,7 @@ export function FormNavigation({ categories, currentPage }) {
     <nav
       className="w-64 bg-gradient-to-l from-[rgba(12,34,39,0.05)] to-white p-6 h-full rounded-lg mt-5"
       role="navigation">
-      <ul className="relative" aria-label="Form sections">
+      <ul className="relative overflow-y-auto h-full max-h-[calc(100vh-14rem)]" aria-label="Form sections">
         <div
           className="absolute left-0 w-full h-10 bg-[#0CB2AA] rounded-md shadow-[0px_5px_20px_rgba(0,0,0,0.25)] transition-all duration-300"
           style={{
@@ -46,6 +85,7 @@ FormNavigation.propTypes = {
 // FORM CONTENT
 // ---------------------------------------------------
 export function FormContent({ pageData, formData, handleInputChange }) {
+  
   const renderField = useCallback(
     ({ name, label, type, options }) => {
       const commonProps = {
@@ -76,6 +116,18 @@ export function FormContent({ pageData, formData, handleInputChange }) {
               className="w-full"
             />
           );
+        case "file":
+          return (
+            <>
+              <FileUpload />
+              <label className="mr-2">Ya está subido</label>
+              <Checkbox
+                {...commonProps}
+                checked={formData[name] === "true"}
+                onChange={(e) => handleInputChange(name, e.target.checked ? "true" : "false")}
+              />
+            </>
+          );
         default:
           return (
             <Input
@@ -86,7 +138,9 @@ export function FormContent({ pageData, formData, handleInputChange }) {
             />
           );
       }
-    }, [formData, handleInputChange]);
+    },
+    [formData, handleInputChange]
+  );
 
   return (
     <div className="flex justify-center items-start h-full items-center">

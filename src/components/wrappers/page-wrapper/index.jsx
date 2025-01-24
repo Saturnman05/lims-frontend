@@ -13,7 +13,9 @@ export function PageWrapper(props) {
         <div>
           <Breadcrumb items={breadCrumbItems} />
         </div>
-        <div className="page-wrapper-children">{children}</div>
+        <div className="page-wrapper-children overflow-y-scroll w-full">
+          {children}
+        </div>
       </div>
     </ConfigProvider>
   );

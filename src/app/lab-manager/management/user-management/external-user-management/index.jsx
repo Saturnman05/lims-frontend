@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import { PageWrapper } from "../../../../../components/wrappers/page-wrapper/index.jsx";
-import NombreInput from "../../../../../components/lab-manager/Inputs/nombre-input/Nombre.jsx";
-
+import ExternalUserManagementTable from "../../../../../components/wrappers/table-wrapper/user-external-table.jsx";
 export default function UserManagementExternalLabManager() {
   return (
     <PageWrapper
@@ -17,7 +16,7 @@ export default function UserManagementExternalLabManager() {
         },
       ]}>
       <>
-        <NombreInput name="name">Nombre Completo </NombreInput>
+        <ExternalUserManagementTable />
       </>
     </PageWrapper>
   );

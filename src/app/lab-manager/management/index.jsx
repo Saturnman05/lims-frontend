@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { PageWrapper } from "../../../components/wrappers/page-wrapper";
 import NombreInput from "../../../components/lab-manager/Inputs/nombre-input/Nombre.jsx";
 
-export default function ManagementLabManager() {
+export default function UserManagementInternalLabManager() {
   return (
     <PageWrapper
       breadCrumbItems={[
