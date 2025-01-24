@@ -63,6 +63,7 @@ export default function NavLabManager() {
       ],
     },
   ];
+
   return (
     <nav className="nav-lab-header">
       <div className="navbar-logo">
